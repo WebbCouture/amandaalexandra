@@ -20,7 +20,15 @@ An e-commerce website for selling custom 3D printed products.
 (To be completed)
 
 ## Wireframes
-(To be added)
+
+### Home Page (Mobile, Tablet, Desktop)
+![Home Wireframe](docs/readme-img/wireframes/home_responsive.png)
+
+### Shop Page (Mobile, Tablet, Desktop)
+![Shop Wireframe](docs/readme-img/wireframes/shop_responsive.png)
+
+### Product Page (Mobile, Tablet, Desktop)
+![Product Wireframe](docs/readme-img/wireframes/product_responsive.png)
 
 ## Features
 (To be completed)
