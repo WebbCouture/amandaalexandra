@@ -113,6 +113,10 @@ and readable typography.
 ### Product Page (Mobile, Tablet, Desktop)
 ![Product Wireframe](docs/readme-img/wireframes/product_responsive.png)
 
+### Cart, Checkout & Profile Pages (Mobile, Tablet, Desktop)
+![Other Pages Wireframe](docs/readme-img/wireframes/other_pages_responsive.png)
+
+
 ---
 
 ## Features
