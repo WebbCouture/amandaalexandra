@@ -107,11 +107,17 @@ and readable typography.
 ### Home Page (Mobile, Tablet, Desktop)
 ![Home Wireframe](docs/readme-img/wireframes/home_responsive.png)
 
+
+
 ### Shop Page (Mobile, Tablet, Desktop)
 ![Shop Wireframe](docs/readme-img/wireframes/shop_responsive.png)
 
+
+
 ### Product Page (Mobile, Tablet, Desktop)
 ![Product Wireframe](docs/readme-img/wireframes/product_responsive.png)
+
+
 
 ### Cart, Checkout & Profile Pages (Mobile, Tablet, Desktop)
 ![Other Pages Wireframe](docs/readme-img/wireframes/other_pages_responsive.png)
