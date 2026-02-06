@@ -178,6 +178,15 @@ Validation tools and Lighthouse audits were used to improve performance and acce
 All major bugs encountered during development are documented and resolved.
 
 ---
+## Local Setup (Development)
+
+To run the project locally:
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/AmandaAlexandraStudio/3DPrints.git
+cd 3DPrints
 
 ## Deployment
 
