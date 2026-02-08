@@ -182,11 +182,26 @@ All major bugs encountered during development are documented and resolved.
 
 To run the project locally:
 
-1. Clone the repository
+## Clone the repository
 
 ```bash
 git clone https://github.com/AmandaAlexandraStudio/3DPrints.git
 cd 3DPrints
+python -m venv .venv
+
+# Mac / Linux
+source .venv/bin/activate
+
+# Windows
+.venv\Scripts\activate
+
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
+
+```
+
 
 ## Deployment
 
@@ -194,7 +209,7 @@ The project is deployed using Heroku.
 
 ### Local Deployment
 
-1. Clone the repository
+1. Clone the repository (see "Local Setup" section above)
 2. Create a virtual environment
 3. Install dependencies
 4. Run migrations
@@ -207,6 +222,12 @@ The project is deployed using Heroku.
 3. Connect GitHub repository
 4. Deploy the main branch
 5. Set up PostgreSQL database
+```bash
+heroku run python manage.py migrate
+heroku run python manage.py collectstatic
+```
+
+
 
 ---
 
