@@ -15,16 +15,17 @@ urlpatterns = [
     path('products/', include('products.urls')),
 
     # Bag
-    path('bag/', include('bag.urls')),   # ✅ HÄR
-
-    # Home page (lägg sist)
-    path('', include('home.urls')),
+    path('bag/', include('bag.urls')),
 
     # Profiles path
     path('profile/', include('profiles.urls')),
 
-]
+    # Checkoute path
+    path('checkout/', include('checkout.urls')),
 
+    # Home page (lägg sist)
+    path('', include('home.urls')),
+]
 
 # Serve media files in development
 if settings.DEBUG:
