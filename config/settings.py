@@ -45,18 +45,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     # Sites (allauth)
     "django.contrib.sites",
+
     # Allauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+
     # Your apps
     "home",
     "accounts",
     "products",
     "checkout",
     "bag",
+    "profiles.apps.ProfilesConfig",
 ]
 
 SITE_ID = 1
@@ -203,7 +207,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 
 LOGIN_URL = "/accounts/login/"
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/profile/"
 LOGOUT_REDIRECT_URL = "/"
 
 FREE_DELIVERY_THRESHOLD = 50

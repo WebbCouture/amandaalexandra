@@ -19,6 +19,10 @@ urlpatterns = [
 
     # Home page (lägg sist)
     path('', include('home.urls')),
+
+    # Profiles path
+    path('profile/', include('profiles.urls')),
+
 ]
 
 
