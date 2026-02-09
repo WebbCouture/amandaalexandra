@@ -42,6 +42,7 @@ provide customers with personalized products.
 - As a shopper, I want to view a list of products so that I can choose items to purchase.
 - As a shopper, I want to search and filter products so that I can find products easily.
 - As a shopper, I want to view product details so that I can make informed decisions.
+- As a shopper, I want to search products by keyword and category so that I can find items quickly.
 
 ### Account Management
 - As a user, I want to register and log in so that I can access my profile.
@@ -140,7 +141,7 @@ Special attention was given to spacing, typography, and button styling to create
 ## Features
 
 - User registration and login system
-- Product browsing and filtering
+- - Product browsing with category filtering and keyword search
 - Shopping cart
 - Secure Stripe checkout
 - User profile with order history
