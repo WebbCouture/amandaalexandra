@@ -157,11 +157,13 @@ Special attention was given to spacing, typography, and button styling to create
 
 - Session-based shopping bag using Django sessions
 - Add products to the bag from the product detail page
-- Quantity selector (+ / −) on product detail page
+- Quantity selector on product detail page
 - Dynamic subtotal calculation per product
 - Bag total, delivery cost, and grand total calculated automatically
 - Free delivery threshold logic
+- Support for products with and without sizes
 - Optional product sizes (XS–XL) for applicable products
+- Same product with different sizes displayed as separate line items
 - Selected size displayed in the shopping bag
 
 ---
