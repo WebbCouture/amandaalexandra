@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- White background overlay to cover homepage background -->
+<div class="overlay"></div>
+
+<div class="container-fluid">
+
+    <div class="row">
+
+        <!-- Image column (offset to center like in video) -->
+        <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
+
+            <a href="{{ product.image_safe_url }}" target="_blank">
+                <img class="card-img-top img-fluid"
+                     src="{{ product.image_safe_url }}"
+                     alt="{{ product.name }}">
+            </a>
+
+        </div>
+
+        <!-- Details column -->
+        <div class="col-12 col-md-6 col-lg-4">
+
+            <p class="mb-0">{{ product.name }}</p>
+
+            <p class="lead mb-0 font-weight-bold">
+                {{ product.price }} SEK
+            </p>
+
+            {% if product.rating %}
+                <small class="text-muted">
+                    <i class="fas fa-star mr-1"></i>{{ product.rating }} / 5
+                </small>
+            {% endif %}
+
+            {% if product.description %}
+                <p class="mt-3">{{ product.description }}</p>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
