@@ -11,9 +11,13 @@ urlpatterns = [
     # Allauth
     path('accounts/', include('allauth.urls')),
 
-    # Home page
+    # Products (lägg före home)
+    path('products/', include('products.urls')),
+
+    # Home page (lägg sist)
     path('', include('home.urls')),
 ]
+
 
 # Serve media files in development
 if settings.DEBUG:
