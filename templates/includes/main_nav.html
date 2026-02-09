@@ -13,43 +13,76 @@
             </a>
 
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="{% url 'product_list' %}" class="dropdown-item">All Products</a>
-                <a href="{% url 'product_list' %}?sort=price" class="dropdown-item">By Price</a>
-                <a href="{% url 'product_list' %}?sort=rating" class="dropdown-item">By Rating</a>
-                <a href="{% url 'product_list' %}?sort=category" class="dropdown-item">By Category</a>
-            </div>
-        </li>
+                <a href="{% url 'product_list' %}" class="dropdown-item">
+                    All Products
+                </a>
 
-        <!-- Categories (placeholder names - update to match your real categories later) -->
-        <li class="nav-item dropdown">
-            <a class="nav-link text-black dropdown-toggle"
-               href="#"
-               id="category-1-link"
-               data-toggle="dropdown"
-               aria-haspopup="true"
-               aria-expanded="false">
-                Accessories
-            </a>
+                <a href="{% url 'product_list' %}?sort=price" class="dropdown-item">
+                    By Price
+                </a>
 
-            <div class="dropdown-menu border-0" aria-labelledby="category-1-link">
-                <a href="{% url 'product_list' %}?category=accessories" class="dropdown-item">
-                    All Accessories
+                <a href="{% url 'product_list' %}?sort=rating" class="dropdown-item">
+                    By Rating
+                </a>
+
+                <a href="{% url 'product_list' %}?sort=category" class="dropdown-item">
+                    By Category
                 </a>
             </div>
         </li>
 
+        <!-- Keychains -->
         <li class="nav-item dropdown">
             <a class="nav-link text-black dropdown-toggle"
                href="#"
-               id="category-2-link"
+               id="keychains-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Keychains
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="keychains-link">
+                <a href="{% url 'product_list' %}?category=keychains"
+                   class="dropdown-item">
+                    All Keychains
+                </a>
+            </div>
+        </li>
+
+        <!-- Figurines -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="figurines-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Figurines
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="figurines-link">
+                <a href="{% url 'product_list' %}?category=figurines"
+                   class="dropdown-item">
+                    All Figurines
+                </a>
+            </div>
+        </li>
+
+        <!-- Home Decor -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="home-decor-link"
                data-toggle="dropdown"
                aria-haspopup="true"
                aria-expanded="false">
                 Home Decor
             </a>
 
-            <div class="dropdown-menu border-0" aria-labelledby="category-2-link">
-                <a href="{% url 'product_list' %}?category=home-decor" class="dropdown-item">
+            <div class="dropdown-menu border-0" aria-labelledby="home-decor-link">
+                <a href="{% url 'product_list' %}?category=home_decor"
+                   class="dropdown-item">
                     All Home Decor
                 </a>
             </div>
@@ -67,8 +100,9 @@
             </a>
 
             <div class="dropdown-menu border-0" aria-labelledby="offers-link">
-                <a href="{% url 'product_list' %}?special=true" class="dropdown-item">
-                    Deals
+                <a href="{% url 'product_list' %}?category=special_offers"
+                   class="dropdown-item">
+                    Deals & Discounts
                 </a>
             </div>
         </li>
