@@ -1,4 +1,6 @@
 # AmandaAlexandra – 3D Print Shop
+Live Site: Coming soon (deployment in progress)
+
 
 ## Project Overview
 
@@ -264,6 +266,15 @@ heroku run python manage.py collectstatic
 - Payment processing is handled securely via Stripe
 
 ---
+## Known Issues
+
+- Email confirmation is displayed in the console during local development.
+- Some admin features are restricted to superusers only.
+
+No critical bugs are currently known.
+
+---
+
 
 ## Credits
 
