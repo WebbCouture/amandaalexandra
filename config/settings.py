@@ -209,3 +209,8 @@ LOGOUT_REDIRECT_URL = "/"
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 
+# ======================
+# MESSAGES (TOASTS)
+# ======================
+
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"

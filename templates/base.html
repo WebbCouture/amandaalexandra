@@ -21,7 +21,7 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
           crossorigin="anonymous">
 
-    <!-- Google Font (personal choice similar to Arial) -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Project CSS -->
@@ -170,14 +170,23 @@
         </p>
     </div>
 
+    <!-- Toast messages -->
     {% if messages %}
-    <div class="message-container">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }} text-center mb-0" role="alert">
-            {{ message }}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_success.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
     {% endif %}
 
     {% block page_header %}
@@ -189,6 +198,10 @@
     </main>
 
     {% block postloadjs %}
+        {{ block.super }}
+        <script>
+            $('.toast').toast('show');
+        </script>
     {% endblock %}
 
 </body>

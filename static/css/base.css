@@ -152,4 +152,57 @@ html, body {
   color: white !important;
 }
 
+/* -------------------- Toasts (Bootstrap Messages) */
+
+.message-container {
+    position: fixed;
+    top: 164px;            /* matchar din desktop padding-top */
+    right: 15px;
+    z-index: 99999999999;
+}
+
+/* På mindre skärmar: lite mindre offset */
+@media (max-width: 991px) {
+    .message-container {
+        top: 116px;        /* matchar din header-container padding-top */
+    }
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 4px;
+}
+
+/* Arrow base */
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Arrow colors */
+.arrow-success {
+    border-bottom: 10px solid #28a745;
+}
+
+.arrow-danger {
+    border-bottom: 10px solid #dc3545;
+}
+
+.arrow-warning {
+    border-bottom: 10px solid #ffc107;
+}
+
+.arrow-info {
+    border-bottom: 10px solid #17a2b8;
+}
+
 
