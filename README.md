@@ -146,6 +146,9 @@ Special attention was given to spacing, typography, and button styling to create
 - User profile with order history
 - Admin dashboard for managing products
 - Responsive layout
+- Custom 3D printing product catalogue created specifically for this project
+- Manually curated categories and products (not default course data)
+- Product data managed via Django admin and fixtures
 
 ---
 
