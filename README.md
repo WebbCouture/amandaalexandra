@@ -146,7 +146,6 @@ Special attention was given to spacing, typography, and button styling to create
 - Search result count and active filter indicators
 - Product detail pages with category navigation
 - Responsive layout for mobile, tablet, and desktop
-- Shopping cart functionality
 - Secure Stripe checkout
 - User profile with order history
 - Admin dashboard for managing products
@@ -155,11 +154,15 @@ Special attention was given to spacing, typography, and button styling to create
 - Product data managed via Django admin and fixtures
 
 ## Shopping Bag
-- Session-based shopping bag
+
+- Session-based shopping bag using Django sessions
 - Add products to the bag from the product detail page
-- Quantity selector (+/-) on product detail page
-- Bag total displayed in the navbar
+- Quantity selector (+ / −) on product detail page
+- Dynamic subtotal calculation per product
+- Bag total, delivery cost, and grand total calculated automatically
 - Free delivery threshold logic
+- Optional product sizes (XS–XL) for applicable products
+- Selected size displayed in the shopping bag
 
 ---
 
