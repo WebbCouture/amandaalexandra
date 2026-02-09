@@ -2,7 +2,6 @@ from django.db import models
 
 
 class Category(models.Model):
-
     name = models.CharField(max_length=254)
     friendly_name = models.CharField(
         max_length=254,
@@ -21,7 +20,6 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-
     category = models.ForeignKey(
         'Category',
         null=True,
@@ -36,7 +34,6 @@ class Product(models.Model):
     )
 
     name = models.CharField(max_length=254)
-
     description = models.TextField()
 
     price = models.DecimalField(
@@ -57,10 +54,29 @@ class Product(models.Model):
         blank=True
     )
 
+    # ✅ Lägg upload_to så filer hamnar i /media/products/
     image = models.ImageField(
+        upload_to="products/",
         null=True,
         blank=True
     )
 
     def __str__(self):
         return self.name
+
+    # ✅ Säker URL: undviker 404 om DB pekar på fil som inte finns
+    @property
+    def image_safe_url(self):
+        # 1) Om ImageField finns och filen existerar → använd den
+        try:
+            if self.image and self.image.name and self.image.storage.exists(self.image.name):
+                return self.image.url
+        except Exception:
+            pass
+
+        # 2) Om extern image_url finns → använd den
+        if self.image_url:
+            return self.image_url
+
+        # 3) Annars → placeholder (din fil i media/products/)
+        return "/media/products/placeholder.jpg"
