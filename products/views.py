@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.contrib import messages
 from django.db.models import Q
+from django.db.models.functions import Lower
 
 from .models import Product, Category
 
@@ -30,26 +31,32 @@ def product_list(request):
             products = products.filter(category__name__in=category_list)
             categories = Category.objects.filter(name__in=category_list)
 
-    # SORT: price / rating / category
+    # SORT: price / rating / category / name
     if "sort" in request.GET:
-        sort = request.GET.get("sort")
+        sortkey = request.GET.get("sort")
+        sort = sortkey
 
-        if sort == "category":
+        # Case-insensitive sorting for name
+        if sortkey == "name":
+            products = products.annotate(lower_name=Lower("name"))
+            sortkey = "lower_name"
+
+        # Category sorting (by name, not id)
+        if sortkey == "category":
             sortkey = "category__name"
-        else:
-            sortkey = sort
 
-        # Optional direction
         direction = request.GET.get("direction")
         if direction == "desc":
             sortkey = f"-{sortkey}"
 
         products = products.order_by(sortkey)
 
+    current_sorting = f"{sort}_{direction}"
+
     context = {
         "products": products,
         "current_categories": categories,
-        "current_sorting": f"{sort}_{direction}",
+        "current_sorting": current_sorting,
         "search_term": query,
     }
 

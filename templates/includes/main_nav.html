@@ -17,15 +17,15 @@
                     All Products
                 </a>
 
-                <a href="{% url 'product_list' %}?sort=price" class="dropdown-item">
+                <a href="{% url 'product_list' %}?sort=price&direction=asc" class="dropdown-item">
                     By Price
                 </a>
 
-                <a href="{% url 'product_list' %}?sort=rating" class="dropdown-item">
+                <a href="{% url 'product_list' %}?sort=rating&direction=desc" class="dropdown-item">
                     By Rating
                 </a>
 
-                <a href="{% url 'product_list' %}?sort=category" class="dropdown-item">
+                <a href="{% url 'product_list' %}?sort=category&direction=asc" class="dropdown-item">
                     By Category
                 </a>
             </div>
