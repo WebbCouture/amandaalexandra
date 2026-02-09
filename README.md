@@ -155,6 +155,21 @@ Special attention was given to spacing, typography, and button styling to create
 - Manually curated categories and products (not default course data)
 - Product data managed via Django admin and fixtures
 
+---
+
+## Improvements Beyond Course Material
+
+- Implemented robust image handling across product pages, shopping bag, and toast notifications,
+  supporting local images, external image URLs, and safe fallbacks.
+- Improved user feedback by ensuring all shopping bag actions redirect correctly
+  and display meaningful toast notifications without relying on JavaScript.
+- Refactored notification previews to handle real-world edge cases
+  not fully covered in the course examples.
+- Enhanced error handling and defensive coding practices
+  to improve stability and maintainability.
+
+---
+
 ## Shopping Bag
 
 - Session-based shopping bag using Django sessions

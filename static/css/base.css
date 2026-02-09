@@ -2,17 +2,18 @@ html {
     height: 100%;
 }
 
+/* Prevent horizontal scroll issues on small screens */
+html,
+body {
+    overflow-x: hidden;
+}
+
 body {
     height: 100%;
     background: url('/media/homepage_background.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #555;
     font-family: 'Inter', sans-serif;
-}
-
-/* Prevent horizontal scroll issues on small screens */
-html, body {
-    overflow-x: hidden;
 }
 
 /* White background overlay */
@@ -77,6 +78,107 @@ html, body {
     color: white;
 }
 
+.btn-outline-black {
+    background: white;
+    color: black !important;
+    border: 1px solid black;
+}
+
+.btn-outline-black:hover,
+.btn-outline-black:active,
+.btn-outline-black:focus {
+    background: black;
+    color: white !important;
+}
+
+.category-badge > span:hover {
+    background: #212529;
+    color: #fff !important;
+}
+
+.btt-button {
+    height: 42px;
+    width: 42px;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.btt-link,
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
+
+/* -------------------- Toasts (Bootstrap Messages) */
+
+.message-container {
+    position: fixed;
+    top: 164px; /* matchar din desktop padding-top */
+    right: 15px;
+    z-index: 99999999999;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 4px;
+}
+
+/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid black; /* default */
+    position: absolute;
+    top: -10px;
+    right: 36px; /* matchar skolans placering */
+}
+
+/* Convenience classes - colors copied from Bootstrap */
+.arrow-primary {
+    border-bottom-color: #007bff !important;
+}
+
+.arrow-secondary {
+    border-bottom-color: #6c757d !important;
+}
+
+.arrow-success {
+    border-bottom-color: #28a745 !important;
+}
+
+.arrow-danger {
+    border-bottom-color: #dc3545 !important;
+}
+
+.arrow-warning {
+    border-bottom-color: #ffc107 !important;
+}
+
+.arrow-info {
+    border-bottom-color: #17a2b8 !important;
+}
+
+.arrow-light {
+    border-bottom-color: #f8f9fa !important;
+}
+
+.arrow-dark {
+    border-bottom-color: #343a40 !important;
+}
+
+/* Bag preview in success toast */
+.bag-notification-wrapper {
+    max-height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
 /* -------------------------------- Media Queries */
 
 /* Slightly larger container on xl screens */
@@ -113,96 +215,14 @@ html, body {
         padding-top: 116px;
     }
 
+    /* Toasts: matchar din header-container padding-top */
+    .message-container {
+        top: 116px;
+    }
+
     /* Avoid unintended horizontal offsets from header rows */
     header .row {
         margin-left: 0;
         margin-right: 0;
     }
 }
-
-.category-badge > span:hover {
-    background: #212529;
-    color: #fff !important;
-}
-
-.btt-button {
-    height: 42px;
-    width: 42px;
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-}
-
-.btt-link,
-.update-link,
-.remove-item {
-    cursor: pointer;
-}
-
-.btn-outline-black {
-  background: white;
-  color: black !important;
-  border: 1px solid black;
-}
-
-.btn-outline-black:hover,
-.btn-outline-black:active,
-.btn-outline-black:focus {
-  background: black;
-  color: white !important;
-}
-
-/* -------------------- Toasts (Bootstrap Messages) */
-
-.message-container {
-    position: fixed;
-    top: 164px;            /* matchar din desktop padding-top */
-    right: 15px;
-    z-index: 99999999999;
-}
-
-/* På mindre skärmar: lite mindre offset */
-@media (max-width: 991px) {
-    .message-container {
-        top: 116px;        /* matchar din header-container padding-top */
-    }
-}
-
-.custom-toast {
-    overflow: visible;
-}
-
-.toast-capper {
-    height: 4px;
-}
-
-/* Arrow base */
-.arrow-up {
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    position: absolute;
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-/* Arrow colors */
-.arrow-success {
-    border-bottom: 10px solid #28a745;
-}
-
-.arrow-danger {
-    border-bottom: 10px solid #dc3545;
-}
-
-.arrow-warning {
-    border-bottom: 10px solid #ffc107;
-}
-
-.arrow-info {
-    border-bottom: 10px solid #17a2b8;
-}
-
-
