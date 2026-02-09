@@ -18,6 +18,7 @@ provide customers with personalized products.
 
 - Easily browse and purchase 3D printed products
 - View clear product images and descriptions
+- Search, filter, and sort products efficiently
 - Complete secure online payments
 - Access order history through a personal account
 - Use the website on mobile, tablet, and desktop devices
@@ -40,9 +41,11 @@ provide customers with personalized products.
 
 ### Viewing and Navigation
 - As a shopper, I want to view a list of products so that I can choose items to purchase.
-- As a shopper, I want to search and filter products so that I can find products easily.
 - As a shopper, I want to view product details so that I can make informed decisions.
-- As a shopper, I want to search products by keyword and category so that I can find items quickly.
+- As a shopper, I want to search products by keyword so that I can find items quickly.
+- As a shopper, I want to filter products by category so that I can narrow down my choices.
+- As a shopper, I want to sort products by price, rating, or category so that I can browse efficiently.
+- As a shopper, I want to see how many products match my search or filters.
 
 ### Account Management
 - As a user, I want to register and log in so that I can access my profile.
@@ -72,7 +75,8 @@ Accessibility and ease of use were considered to ensure the website can be used 
 ### Scope Plane
 The main features include:
 - User authentication system
-- Product listings and categories
+- Product listings with search, filtering, and sorting
+- Product detail pages
 - Shopping cart functionality
 - Stripe payment integration
 - User profiles and order history
@@ -97,11 +101,12 @@ responsiveness of the website before development.
 These wireframes guided the placement of navigation, product grids, and buttons.
 
 ### Surface Plane
-The visual design uses a ÄNDRA SEN FÄRG HÄR? soft pink and purple color scheme to reflect the
+The visual design uses a ÄNDRA FÄRG HÄR? soft pink and purple color scheme to reflect the
 AmandaAlexandra brand identity. The layout is clean and modern, with clear buttons
 and readable typography.
 
 ---
+
 ## Design and Visual Customisation
 
 The website design was inspired by the course material but has been customised to reflect the AmandaAlexandra brand identity.
@@ -114,39 +119,37 @@ Media queries were used to ensure that the layout remains responsive on mobile, 
 
 Special attention was given to spacing, typography, and button styling to create a clean and professional shopping experience.
 
+---
 
 ## Wireframes
 
 ### Home Page (Mobile, Tablet, Desktop)
 ![Home Wireframe](docs/readme-img/wireframes/home_responsive.png)
 
-
-
 ### Shop Page (Mobile, Tablet, Desktop)
 ![Shop Wireframe](docs/readme-img/wireframes/shop_responsive.png)
-
-
 
 ### Product Page (Mobile, Tablet, Desktop)
 ![Product Wireframe](docs/readme-img/wireframes/product_responsive.png)
 
-
-
 ### Cart, Checkout & Profile Pages (Mobile, Tablet, Desktop)
 ![Other Pages Wireframe](docs/readme-img/wireframes/other_pages_responsive.png)
-
 
 ---
 
 ## Features
 
 - User registration and login system
-- Products can be sorted by price, rating, and category
-- Shopping cart
+- Product listing with category filtering
+- Keyword search across product names and descriptions
+- Product sorting by price, rating, and category
+- Search result count and active filter indicators
+- Product detail pages with category navigation
+- Responsive layout for mobile, tablet, and desktop
+- Shopping cart functionality
 - Secure Stripe checkout
 - User profile with order history
 - Admin dashboard for managing products
-- Responsive layout
 - Custom 3D printing product catalogue created specifically for this project
 - Manually curated categories and products (not default course data)
 - Product data managed via Django admin and fixtures
@@ -184,21 +187,20 @@ Relationships are designed to ensure data integrity and efficient querying.
 Manual testing was conducted throughout development to ensure:
 
 - Navigation links function correctly
+- Search, filter, and sorting features behave as expected
 - Forms validate input properly
-- Checkout process works as expected
 - Responsive design works on multiple screen sizes
 - Cross-browser compatibility
 
 Validation tools and Lighthouse audits were used to improve performance and accessibility.
 
-All major bugs encountered during development are documented and resolved.
+All major bugs encountered during development were resolved during implementation.
 
 ---
+
 ## Local Setup (Development)
 
 To run the project locally:
-
-## Clone the repository
 
 ```bash
 git clone https://github.com/AmandaAlexandraStudio/3DPrints.git
@@ -215,37 +217,29 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
-
 ```
-
+---
 
 ## Deployment
 
 The project is deployed using Heroku.
 
-### Local Deployment
-
-1. Clone the repository (see "Local Setup" section above)
-2. Create a virtual environment
-3. Install dependencies
-4. Run migrations
-5. Start the development server
-
-### Heroku Deployment
+### Heroku Deployment Steps
 
 1. Create a Heroku application
+
 2. Configure environment variables
+
 3. Connect GitHub repository
+
 4. Deploy the main branch
+
 5. Set up PostgreSQL database
-```bash
+
+```bsah
 heroku run python manage.py migrate
 heroku run python manage.py collectstatic
 ```
-
-
-
----
 
 ## Security
 
@@ -259,7 +253,17 @@ heroku run python manage.py collectstatic
 ## Credits
 
 - Django Documentation
+
 - Stripe Documentation
-- Code Institute learning materials
-- Wireframes created by AmandaAlexandra
+
+- Online developer communities and forums
+
+- Brian Macharia, my mentor
+
+- Wireframes and design created by AmandaAlexandra
+
 - All product images and content created or licensed by the site owner
+
+- Project created and developed by Amanda Alexandra (2026)
+
+
