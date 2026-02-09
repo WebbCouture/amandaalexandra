@@ -14,6 +14,9 @@ urlpatterns = [
     # Products (lägg före home)
     path('products/', include('products.urls')),
 
+    # Bag
+    path('bag/', include('bag.urls')),   # ✅ HÄR
+
     # Home page (lägg sist)
     path('', include('home.urls')),
 ]

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="overlay"></div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col">
+      <hr>
+      <h2>Shopping Bag</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+
+      {% if bag_items %}
+
+        <p>Bag items kommer här.</p>
+
+      {% else %}
+
+        <p>Your bag is empty.</p>
+
+        <a href="{% url 'product_list' %}" class="btn btn-outline-dark">
+        Keep shopping
+        </a>
+
+      {% endif %}
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}
