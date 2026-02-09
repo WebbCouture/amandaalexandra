@@ -1,4 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
+from django.db.models import Q
+
 from .models import Product, Category
 
 
@@ -7,6 +10,17 @@ def product_list(request):
     categories = None
     sort = None
     direction = None
+    query = None
+
+    # SEARCH: q
+    if "q" in request.GET:
+        query = request.GET.get("q")
+        if not query:
+            messages.error(request, "You didn't enter any search criteria!")
+            return redirect(reverse("product_list"))
+
+        queries = Q(name__icontains=query) | Q(description__icontains=query)
+        products = products.filter(queries)
 
     # FILTER: category
     if "category" in request.GET:
@@ -35,9 +49,11 @@ def product_list(request):
         "products": products,
         "current_categories": categories,
         "current_sorting": f"{sort}_{direction}",
+        "search_term": query,
     }
 
     return render(request, "products/product_list.html", context)
+
 
 def product_detail(request, product_id):
     """ A view to show individual product details """
@@ -48,4 +64,3 @@ def product_detail(request, product_id):
     }
 
     return render(request, "products/product_detail.html", context)
-
