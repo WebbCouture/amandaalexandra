@@ -154,6 +154,13 @@ Special attention was given to spacing, typography, and button styling to create
 - Manually curated categories and products (not default course data)
 - Product data managed via Django admin and fixtures
 
+## Shopping Bag
+- Session-based shopping bag
+- Add products to the bag from the product detail page
+- Quantity selector (+/-) on product detail page
+- Bag total displayed in the navbar
+- Free delivery threshold logic
+
 ---
 
 ## Data Model
