@@ -24,6 +24,9 @@
           integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
           crossorigin="anonymous">
 
+    <!-- Google Font (personal choice similar to Arial) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <!-- Project CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
@@ -139,11 +142,8 @@
         </div>
     </header>
 
-    {% block page_header %}
-    {% endblock %}
-
     {% if messages %}
-    <div class="message-container mt-5 pt-5">
+    <div class="message-container">
         {% for message in messages %}
         <div class="alert alert-{{ message.tags }} text-center mb-0" role="alert">
             {{ message }}
@@ -152,7 +152,10 @@
     </div>
     {% endif %}
 
-    <main class="container" style="padding-top: 120px;">
+    {% block page_header %}
+    {% endblock %}
+
+    <main class="container">
         {% block content %}
         {% endblock %}
     </main>

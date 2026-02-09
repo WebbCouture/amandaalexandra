@@ -3,11 +3,11 @@ html {
 }
 
 body {
+    height: 100%;
     background: url('/media/homepage_background.jpg') no-repeat center center fixed;
     background-size: cover;
-    height: calc(100vh - 164px);
     color: #555;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 /* Keep FontAwesome icons centered */
@@ -59,4 +59,20 @@ body {
 .shop-now-button:focus {
     background: #222;
     color: white;
+}
+
+/* -------------------------------- Media Queries */
+
+/* Slightly larger container on xl screens */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 80%;
+    }
+}
+
+/* Push page content down under fixed header on medium and up */
+@media (min-width: 992px) {
+    .header-container {
+        padding-top: 164px;
+    }
 }
