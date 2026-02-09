@@ -22,12 +22,13 @@ def product_list(request):
         queries = Q(name__icontains=query) | Q(description__icontains=query)
         products = products.filter(queries)
 
-    # FILTER: category
+    # FILTER: category (supports comma-separated)
     if "category" in request.GET:
         category = request.GET.get("category")
         if category:
-            products = products.filter(category__name=category)
-            categories = Category.objects.filter(name=category)
+            category_list = category.split(",")
+            products = products.filter(category__name__in=category_list)
+            categories = Category.objects.filter(name__in=category_list)
 
     # SORT: price / rating / category
     if "sort" in request.GET:
