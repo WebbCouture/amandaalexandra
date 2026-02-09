@@ -101,3 +101,9 @@ body {
         padding-top: 164px;
     }
 }
+
+.category-badge > span:hover {
+    background: #212529;
+    color: #fff !important;
+}
+
