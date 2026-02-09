@@ -141,7 +141,7 @@ Special attention was given to spacing, typography, and button styling to create
 ## Features
 
 - User registration and login system
-- - Product browsing with category filtering and keyword search
+- Products can be sorted by price, rating, and category
 - Shopping cart
 - Secure Stripe checkout
 - User profile with order history
