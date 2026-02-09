@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     "home",
     "accounts",
     "products",
-    "checkout",
+    "checkout.apps.CheckoutConfig",
     "bag",
     "profiles.apps.ProfilesConfig",
 ]
