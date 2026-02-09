@@ -96,11 +96,23 @@ responsiveness of the website before development.
 These wireframes guided the placement of navigation, product grids, and buttons.
 
 ### Surface Plane
-The visual design uses a soft pink and purple color scheme to reflect the
+The visual design uses a ÄNDRA SEN FÄRG HÄR? soft pink and purple color scheme to reflect the
 AmandaAlexandra brand identity. The layout is clean and modern, with clear buttons
 and readable typography.
 
 ---
+## Design and Visual Customisation
+
+The website design was inspired by the course material but has been customised to reflect the AmandaAlexandra brand identity.
+
+A custom Google Font (Inter) was implemented instead of the default course font to create a more modern and minimal aesthetic.
+
+The homepage layout and header structure were adapted to improve usability and readability across different screen sizes.
+
+Media queries were used to ensure that the layout remains responsive on mobile, tablet, and desktop devices.
+
+Special attention was given to spacing, typography, and button styling to create a clean and professional shopping experience.
+
 
 ## Wireframes
 
