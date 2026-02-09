@@ -53,6 +53,7 @@
 <body>
 
     <header class="container-fluid fixed-top-desktop-only bg-white border-bottom">
+        <!-- Top header (desktop only) -->
         <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
 
             <!-- Logo -->
@@ -140,7 +141,34 @@
             </div>
 
         </div>
+
+        <!-- Main navbar row -->
+        <div class="row bg-white">
+            <nav class="navbar navbar-expand-lg navbar-light w-100">
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#main-nav"
+                        aria-controls="main-nav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                {% include 'includes/mobile_top_header.html' %}
+                {% include 'includes/main_nav.html' %}
+
+            </nav>
+        </div>
     </header>
+
+    <!-- Delivery banner -->
+    <div class="container-fluid bg-black text-white text-center py-2">
+        <p class="my-0">
+            Free delivery on orders over ${{ free_shipping_threshold|default:"50" }}
+        </p>
+    </div>
 
     {% if messages %}
     <div class="message-container">

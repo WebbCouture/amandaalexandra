@@ -1,0 +1,60 @@
+<ul class="list-inline list-unstyled text-center my-0">
+
+    <!-- Search -->
+    <li class="list-inline-item d-block d-lg-none dropdown">
+        <a class="text-black nav-link"
+           href="#"
+           id="mobile-search"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false">
+            <i class="fas fa-search fa-lg"></i>
+        </a>
+
+        <div class="dropdown-menu border-0 w-100 p-3" aria-labelledby="mobile-search">
+            <form method="GET">
+                <div class="input-group">
+                    <input class="form-control border border-black rounded-0"
+                           type="text"
+                           name="q"
+                           placeholder="Search our site">
+
+                    <div class="input-group-append">
+                        <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </li>
+
+    <!-- Account -->
+    <li class="list-inline-item dropdown d-block d-lg-none">
+        <a class="text-black nav-link"
+           href="#"
+           id="user-options-mobile"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false">
+            <i class="fas fa-user fa-lg"></i>
+        </a>
+
+        <div class="dropdown-menu border-0" aria-labelledby="user-options-mobile">
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+            {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+            {% endif %}
+        </div>
+    </li>
+
+    <!-- Bag -->
+    <li class="list-inline-item d-block d-lg-none">
+        <a class="text-black nav-link" href="#">
+            <i class="fas fa-shopping-bag fa-lg"></i>
+        </a>
+    </li>
+
+</ul>

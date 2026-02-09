@@ -1,0 +1,77 @@
+<div class="collapse navbar-collapse" id="main-nav">
+    <ul class="navbar-nav w-auto mx-auto">
+
+        <!-- All Products -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="all-products-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                All Products
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'product_list' %}" class="dropdown-item">All Products</a>
+                <a href="{% url 'product_list' %}?sort=price" class="dropdown-item">By Price</a>
+                <a href="{% url 'product_list' %}?sort=rating" class="dropdown-item">By Rating</a>
+                <a href="{% url 'product_list' %}?sort=category" class="dropdown-item">By Category</a>
+            </div>
+        </li>
+
+        <!-- Categories (placeholder names - update to match your real categories later) -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="category-1-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Accessories
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="category-1-link">
+                <a href="{% url 'product_list' %}?category=accessories" class="dropdown-item">
+                    All Accessories
+                </a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="category-2-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Home Decor
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="category-2-link">
+                <a href="{% url 'product_list' %}?category=home-decor" class="dropdown-item">
+                    All Home Decor
+                </a>
+            </div>
+        </li>
+
+        <!-- Special Offers -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="offers-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Special Offers
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="offers-link">
+                <a href="{% url 'product_list' %}?special=true" class="dropdown-item">
+                    Deals
+                </a>
+            </div>
+        </li>
+
+    </ul>
+</div>
