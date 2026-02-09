@@ -10,6 +10,11 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
+/* Prevent horizontal scroll issues on small screens */
+html, body {
+    overflow-x: hidden;
+}
+
 /* White background overlay */
 .overlay {
     height: 100%;
@@ -81,8 +86,8 @@ body {
     }
 }
 
+/* Desktop: fixed header + push page content down */
 @media (min-width: 992px) {
-
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -91,14 +96,27 @@ body {
         z-index: 1030;
     }
 
+    /* Push content down so it doesn't sit behind the fixed header */
+    body {
+        padding-top: 164px; /* justera om du vill: 140–190px */
+    }
+
+    /* IMPORTANT: avoid double spacing on desktop */
+    .header-container {
+        padding-top: 0;
+    }
+}
+
+/* Mobile/Tablet: header spacing */
 @media (max-width: 991px) {
     .header-container {
         padding-top: 116px;
     }
-}
 
-    .header-container {
-        padding-top: 164px;
+    /* Avoid unintended horizontal offsets from header rows */
+    header .row {
+        margin-left: 0;
+        margin-right: 0;
     }
 }
 
