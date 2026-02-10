@@ -223,6 +223,16 @@ The shopping bag demonstrates full CRUD functionality:
 - Admin interface with inline order items
 - Automatic order total updates using Django signals
 
+### Form Validation
+
+The checkout process uses a Django form with server-side validation to ensure
+correct data is entered before an order is created. Required fields are validated,
+email format is checked, and validation errors are displayed to the user if input
+is missing or invalid.
+
+Additional validation is applied in the shopping bag to restrict quantity to a valid range.
+
+
 ## Payments
 
 - Stripe card payments
