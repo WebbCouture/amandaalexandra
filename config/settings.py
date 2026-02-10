@@ -5,10 +5,10 @@ Django settings for config project.
 import os
 from pathlib import Path
 
+import dj_database_url
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # ======================
 # LOAD ENV (env.py) - course style
@@ -32,15 +32,26 @@ if not SECRET_KEY:
 
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
-
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.getenv(
         "ALLOWED_HOSTS",
-        "127.0.0.1,localhost",
+        "127.0.0.1,localhost,.herokuapp.com",
     ).split(",")
     if host.strip()
 ]
+
+# CSRF trusted origins (needed on Heroku/HTTPS)
+# Example value in env:
+# CSRF_TRUSTED_ORIGINS=https://fast-peak-51750-1269072e4677.herokuapp.com
+CSRF_TRUSTED_ORIGINS = [
+    o.strip()
+    for o in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+    if o.strip()
+]
+
+# Recommended security behind a proxy (Heroku)
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 
 # ======================
@@ -56,7 +67,7 @@ STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
 if not STRIPE_PUBLIC_KEY or not STRIPE_SECRET_KEY:
     print(
         "⚠️ Stripe keys saknas (STRIPE_PUBLIC_KEY / STRIPE_SECRET_KEY). "
-        "Kolla env.py."
+        "Kolla env.py / Heroku Config Vars."
     )
 
 
@@ -107,6 +118,10 @@ AUTHENTICATION_BACKENDS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+
+    # WhiteNoise (static files on Heroku)
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -155,12 +170,14 @@ TEMPLATES = [
 # ======================
 # DATABASE
 # ======================
+# Uses DATABASE_URL on Heroku (Postgres), falls back to sqlite locally.
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        conn_max_age=600,
+        ssl_require=not DEBUG,
+    )
 }
 
 
@@ -211,13 +228,11 @@ USE_TZ = True
 # ======================
 
 STATIC_URL = "/static/"
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
+STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
+# WhiteNoise storage (hashed filenames in production)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -259,6 +274,4 @@ STANDARD_DELIVERY_PERCENTAGE = 10
 # MESSAGES (TOASTS)
 # ======================
 
-MESSAGE_STORAGE = (
-    "django.contrib.messages.storage.session.SessionStorage"
-)
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
