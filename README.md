@@ -1,6 +1,5 @@
 # AmandaAlexandra – 3D Print Shop
-Live Site: Coming soon (deployment in progress)
-GLÖM EJ LÄGGA TILL ADMIN INLOG LÖSEN OSV!!
+Live Site: https://fast-peak-51750-1269072e4677.herokuapp.com/profile/
 
 ## Project Overview
 
@@ -63,6 +62,13 @@ provide customers with personalized products.
 - As a user, I want to register and log in so that I can access my profile.
 - As a user, I want to view my order history so that I can track my purchases.
 - As a user, I want to reset my password if I forget it.
+
+### Authentication
+
+The website includes a user authentication system implemented with
+django-allauth. Users can register, log in, and log out. Authentication
+state is reflected in the navigation menu across the site.
+
 
 ### Purchasing
 - As a shopper, I want to add items to my cart so that I can purchase multiple products.
@@ -240,6 +246,10 @@ Additional validation is applied in the shopping bag to restrict quantity to a v
 - Webhook endpoint for payment verification (`/checkout/wh/`)
 - Order redundancy to prevent lost payments
 
+Stripe is integrated using PaymentIntents and Stripe Elements in test mode.
+All payments are verified via webhooks before orders are confirmed.
+
+
 ### Environment Variables
 - STRIPE_PUBLIC_KEY
 - STRIPE_SECRET_KEY
@@ -292,6 +302,14 @@ These relationships ensure data integrity and efficient querying.
 - Django signals (post_save and post_delete) are used to ensure order totals are updated whenever order line items are added, updated, or removed.
 - Delivery cost logic is centralized in the Order model and respects a free delivery threshold.
 - Calculated fields such as order number, totals, and delivery cost are read-only in the admin interface to preserve data integrity.
+
+## Python Logic
+
+Custom Python logic is used throughout the project, including:
+
+- Delivery cost calculation using conditional logic (free delivery threshold).
+- Shopping bag and order total calculations using loops over bag items / order line items.
+- Automatic order total updates via Django model methods and signals.
 
 ---
 
@@ -369,6 +387,9 @@ The project is deployed using Heroku.
 heroku run python manage.py migrate
 heroku run python manage.py collectstatic
 ```
+
+The project is deployed on Heroku and connected to a Heroku Postgres database.
+
 
 ## Security
 
