@@ -1,40 +1,107 @@
 <div class="collapse navbar-collapse" id="main-nav">
-  <ul class="navbar-nav w-auto mx-auto">
+    <ul class="navbar-nav w-auto mx-auto">
 
-    <!-- All Products -->
-    <li class="nav-item dropdown">
-      <a class="nav-link text-black dropdown-toggle"
-         href="#"
-         id="all-products-link"
-         data-toggle="dropdown"
-         aria-haspopup="true"
-         aria-expanded="false">
-        Shop
-      </a>
+        <!-- All Products -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="all-products-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                All Products
+            </a>
 
-      <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-        <a href="{% url 'product_list' %}" class="dropdown-item">All Products</a>
-        <a href="{% url 'product_list' %}?sort=price&direction=asc" class="dropdown-item">By Price</a>
-        <a href="{% url 'product_list' %}?sort=rating&direction=desc" class="dropdown-item">By Rating</a>
-        <div class="dropdown-divider"></div>
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'product_list' %}" class="dropdown-item">
+                    All Products
+                </a>
 
-        {% for c in nav_categories %}
-          <a href="{% url 'product_list' %}?category={{ c.name }}" class="dropdown-item">
-            {{ c.friendly_name|default:c.name }}
-          </a>
-        {% endfor %}
-      </div>
-    </li>
+                <a href="{% url 'product_list' %}?sort=price&direction=asc" class="dropdown-item">
+                    By Price
+                </a>
 
-    <!-- Categories (top level) -->
-    {% for c in nav_categories %}
-      <li class="nav-item">
-        <a class="nav-link text-black"
-           href="{% url 'product_list' %}?category={{ c.name }}">
-          {{ c.friendly_name|default:c.name }}
-        </a>
-      </li>
-    {% endfor %}
+                <a href="{% url 'product_list' %}?sort=rating&direction=desc" class="dropdown-item">
+                    By Rating
+                </a>
 
-  </ul>
+                <a href="{% url 'product_list' %}?sort=category&direction=asc" class="dropdown-item">
+                    By Category
+                </a>
+            </div>
+        </li>
+
+        <!-- Keychains -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="keychains-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Keychains
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="keychains-link">
+                <a href="{% url 'product_list' %}?category=keychains" class="dropdown-item">
+                    All Keychains
+                </a>
+            </div>
+        </li>
+
+        <!-- Figurines -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="figurines-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Figurines
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="figurines-link">
+                <a href="{% url 'product_list' %}?category=figurines" class="dropdown-item">
+                    All Figurines
+                </a>
+            </div>
+        </li>
+
+        <!-- Home Decor -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="home-decor-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Home Decor
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="home-decor-link">
+                <a href="{% url 'product_list' %}?category=home_decor" class="dropdown-item">
+                    All Home Decor
+                </a>
+            </div>
+        </li>
+
+        <!-- Special Offers -->
+        <li class="nav-item dropdown">
+            <a class="nav-link text-black dropdown-toggle"
+               href="#"
+               id="offers-link"
+               data-toggle="dropdown"
+               aria-haspopup="true"
+               aria-expanded="false">
+                Special Offers
+            </a>
+
+            <div class="dropdown-menu border-0" aria-labelledby="offers-link">
+                <a href="{% url 'product_list' %}?category=special_offers" class="dropdown-item">
+                    Deals & Discounts
+                </a>
+            </div>
+        </li>
+
+    </ul>
 </div>
