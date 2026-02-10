@@ -226,3 +226,24 @@ body {
         margin-right: 0;
     }
 }
+
+/* Checkout + Bag product image fix */
+
+.order-summary-image {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* Product thumbnails (bag + checkout) */
+
+.order-summary-image {
+    width: 100%;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+}
+
+
