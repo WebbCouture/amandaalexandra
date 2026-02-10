@@ -5,8 +5,9 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
 from bag.contexts import bag_contents
+from products.models import Product
 from .forms import OrderForm
-from .models import Order
+from .models import Order, OrderLineItem
 
 
 def checkout(request):
@@ -15,7 +16,7 @@ def checkout(request):
     # Stoppa tom checkout
     if not bag:
         messages.error(request, "Your bag is empty")
-        return redirect(reverse("products"))
+        return redirect(reverse("product_list"))
 
     stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -32,6 +33,29 @@ def checkout(request):
 
             order.save()
 
+            # Skapa line items från bag
+            for item_id, item_data in bag.items():
+                product = get_object_or_404(Product, pk=item_id)
+
+                # Om produkten inte har size: bag[item_id] = quantity (int)
+                if isinstance(item_data, int):
+                    OrderLineItem.objects.create(
+                        order=order,
+                        product=product,
+                        quantity=item_data,
+                    )
+                else:
+                    # Om produkten har size:
+                    # bag[item_id]["items_by_size"][size] = quantity
+                    items_by_size = item_data.get("items_by_size", {})
+                    for size, quantity in items_by_size.items():
+                        OrderLineItem.objects.create(
+                            order=order,
+                            product=product,
+                            product_size=size,
+                            quantity=quantity,
+                        )
+
             # Valfritt: spara info-flagga i session (används senare i kursen)
             request.session["save_info"] = "save-info" in request.POST
 
@@ -45,7 +69,7 @@ def checkout(request):
         )
         # Fall through -> rendera sidan igen med fel
 
-    # GET (och även POST om form är invalid): skapa
+    # GET (och även POST om form är invalid): skapa PaymentIntent
     current_bag = bag_contents(request)
     total = current_bag["grand_total"]
     stripe_total = round(total * 100)
