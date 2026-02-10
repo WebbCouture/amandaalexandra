@@ -1,8 +1,8 @@
 import uuid
 
+from django.conf import settings
 from django.db import models
 from django.db.models import Sum
-from django.conf import settings
 
 from products.models import Product
 
@@ -85,16 +85,20 @@ class Order(models.Model):
         return uuid.uuid4().hex.upper()
 
     def update_total(self):
-        """Update grand total each time a line item is added"""
+        """Update grand total each time a line item is added,
+        accounting for delivery costs."""
         self.order_total = self.lineitems.aggregate(
             Sum("lineitem_total")
         )["lineitem_total__sum"] or 0
 
-        self.delivery_cost = (
-            self.order_total
-            * settings.STANDARD_DELIVERY_PERCENTAGE
-            / 100
-        )
+        if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
+            self.delivery_cost = (
+                self.order_total
+                * settings.STANDARD_DELIVERY_PERCENTAGE
+                / 100
+            )
+        else:
+            self.delivery_cost = 0
 
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
@@ -143,12 +147,10 @@ class OrderLineItem(models.Model):
     )
 
     def save(self, *args, **kwargs):
-        """Set lineitem total and update order"""
+        """Set lineitem total.
+        Order totals are updated via signals."""
         self.lineitem_total = self.product.price * self.quantity
-
         super().save(*args, **kwargs)
-
-        self.order.update_total()
 
     def __str__(self):
         return (
