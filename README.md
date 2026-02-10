@@ -201,6 +201,17 @@ Special attention was given to spacing, typography, and button styling to create
 - Admin interface with inline order items
 - Automatic order total updates using Django signals
 
+## Payments
+
+- Stripe card payments
+- Loading overlay during payment processing
+- Webhook endpoint for payment verification (`/checkout/wh/`)
+- Order redundancy to prevent lost payments
+
+### Environment Variables
+- STRIPE_PUBLIC_KEY
+- STRIPE_SECRET_KEY
+- STRIPE_WH_SECRET
 
 ---
 
