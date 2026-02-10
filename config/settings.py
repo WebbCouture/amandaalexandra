@@ -24,6 +24,15 @@ if not SECRET_KEY:
 
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
+
+# Stripe keys
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
+
+if not STRIPE_PUBLIC_KEY or not STRIPE_SECRET_KEY:
+    print("⚠️ Stripe keys saknas i .env")
+
+
 ALLOWED_HOSTS = [
     host.strip()
     for host in os.environ.get(
@@ -53,6 +62,9 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+
+    # Third-party
+    "crispy_forms",
 
     # Your apps
     "home",
@@ -112,7 +124,10 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
 
                 "bag.contexts.bag_contents",
-
+            ],
+            "builtins": [
+                "crispy_forms.templatetags.crispy_forms_tags",
+                "crispy_forms.templatetags.crispy_forms_field",
             ],
         },
     }
