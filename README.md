@@ -14,6 +14,16 @@ The target audience is individuals interested in unique, aesthetic, and custom
 The platform is designed to support small-scale digital manufacturing and
 provide customers with personalized products.
 
+## Tech Stack
+
+- Python 3.x
+- Django 3.2
+- PostgreSQL (production) / SQLite (development)
+- HTML, CSS, JavaScript
+- Stripe API
+- Heroku
+
+
 ---
 
 ## User Goals
@@ -220,13 +230,20 @@ Special attention was given to spacing, typography, and button styling to create
 The main database models include:
 
 - User (Django default user model)
-- Product
+- UserProfile
 - Category
+- Product
 - Order
 - OrderItem
-- UserProfile
 
-Relationships are designed to ensure data integrity and efficient querying.
+### Relationships
+
+- User (1) → (1) UserProfile
+- Category (1) → (many) Product
+- Order (1) → (many) OrderItem
+- Product (1) → (many) OrderItem
+
+These relationships ensure data integrity and efficient querying.
 
 ---
 
