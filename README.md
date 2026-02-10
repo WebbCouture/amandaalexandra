@@ -1,5 +1,41 @@
 # AmandaAlexandra – 3D Print Shop
-Live Site: https://fast-peak-51750-1269072e4677.herokuapp.com/profile/
+
+Live Site: https://fast-peak-51750-1269072e4677.herokuapp.com/
+
+---
+
+## 📑 Table of Contents
+
+- [Project Overview](#project-overview)
+- [Tech Stack](#tech-stack)
+- [User Goals](#user-goals)
+- [Site Owner Goals](#site-owner-goals)
+- [User Stories](#user-stories)
+- [User Experience (UX)](#user-experience-ux)
+- [Design and Visual Customisation](#design-and-visual-customisation)
+- [Wireframes](#wireframes)
+- [Features](#features)
+- [Improvements Beyond Course Material](#improvements-beyond-course-material)
+- [Shopping Bag](#shopping-bag)
+- [CRUD Functionality](#crud-functionality)
+- [Checkout & Orders](#checkout--orders)
+- [Form Validation](#form-validation)
+- [Payments](#payments)
+- [Data Model](#data-model)
+- [Relationships](#relationships)
+- [Technologies Used](#technologies-used)
+- [Technical Notes](#technical-notes)
+- [Python Logic](#python-logic)
+- [Apps](#apps)
+- [Testing](#testing)
+- [Local Setup](#local-setup-development)
+- [Deployment](#deplo)
+- [Security](#)
+- [Known Issues](#known-issues)
+- [Bugs Fixed](#bugs-fixed)
+- [Credits](#credits)
+
+---
 
 ## Project Overview
 
@@ -7,11 +43,10 @@ AmandaAlexandra is an e-commerce platform for selling custom 3D printed products
 The website allows users to browse products, create accounts, and securely
 purchase items online using Stripe.
 
-The target audience is individuals interested in unique, aesthetic, and custom
-3D printed accessories and decorations.
-
 The platform is designed to support small-scale digital manufacturing and
 provide customers with personalized products.
+
+---
 
 ## Tech Stack
 
@@ -22,7 +57,6 @@ provide customers with personalized products.
 - Stripe API
 - Heroku
 
-
 ---
 
 ## User Goals
@@ -31,7 +65,6 @@ provide customers with personalized products.
 - View clear product images and descriptions
 - Search, filter, and sort products efficiently
 - Complete secure online payments
-- Access order history through a personal account
 - Use the website on mobile, tablet, and desktop devices
 - Feel confident using a secure and reliable platform
 
@@ -56,11 +89,9 @@ provide customers with personalized products.
 - As a shopper, I want to search products by keyword so that I can find items quickly.
 - As a shopper, I want to filter products by category so that I can narrow down my choices.
 - As a shopper, I want to sort products by price, rating, or category so that I can browse efficiently.
-- As a shopper, I want to see how many products match my search or filters.
 
 ### Account Management
 - As a user, I want to register and log in so that I can access my profile.
-- As a user, I want to view my order history so that I can track my purchases.
 - As a user, I want to reset my password if I forget it.
 
 ### Authentication
@@ -69,15 +100,9 @@ The website includes a user authentication system implemented with
 django-allauth. Users can register, log in, and log out. Authentication
 state is reflected in the navigation menu across the site.
 
-
 ### Purchasing
 - As a shopper, I want to add items to my cart so that I can purchase multiple products.
 - As a shopper, I want to securely pay for my order using Stripe.
-- As a shopper, I want to checkout as a guest so that I can purchase without creating an account.
-
-### Administration
-- As a site owner, I want to add, edit, and delete products so that I can manage my store.
-- As a site owner, I want to view customer orders.
 
 ---
 
@@ -85,73 +110,39 @@ state is reflected in the navigation menu across the site.
 
 ### Strategy Plane
 The website is designed for users who want to purchase stylish and custom 3D printed
-products online. The main goal is to provide a simple, secure, and visually appealing
-shopping experience.
-
-Accessibility and ease of use were considered to ensure the website can be used by a wide audience.
+products online.
 
 ### Scope Plane
-The main features include:
 - User authentication system
 - Product listings with search, filtering, and sorting
-- Product detail pages
 - Shopping cart functionality
 - Stripe payment integration
-- User profiles and order history
-- Admin product management
-- Responsive design
 
 ### Structure Plane
-The website is structured using a clear navigation system:
 - Home
 - Shop
-- Product Detail
 - Cart / Checkout
 - Profile
-- Contact
-
-This structure ensures users can easily find what they need.
 
 ### Skeleton Plane
-Wireframes were created for mobile, tablet, and desktop views to plan the layout and
-responsiveness of the website before development.
-
-These wireframes guided the placement of navigation, product grids, and buttons.
+Wireframes were created for mobile, tablet, and desktop views.
 
 ### Surface Plane
-The visual design uses a ÄNDRA FÄRG HÄR? soft pink and purple color scheme to reflect the
-AmandaAlexandra brand identity. The layout is clean and modern, with clear buttons
-and readable typography.
+The visual design uses a soft pink and purple color scheme to reflect the
+AmandaAlexandra brand identity.
 
 ---
 
 ## Design and Visual Customisation
 
-The website design was inspired by the course material but has been customised to reflect the AmandaAlexandra brand identity.
-
-A custom Google Font (Inter) was implemented instead of the default course font to create a more modern and minimal aesthetic.
-
-The homepage layout and header structure were adapted to improve usability and readability across different screen sizes.
-
-Media queries were used to ensure that the layout remains responsive on mobile, tablet, and desktop devices.
-
-Special attention was given to spacing, typography, and button styling to create a clean and professional shopping experience.
+The website design was inspired by the course material but customised to reflect
+the AmandaAlexandra brand identity.
 
 ---
 
 ## Wireframes
 
-### Home Page (Mobile, Tablet, Desktop)
-![Home Wireframe](docs/readme-img/wireframes/home_responsive.png)
-
-### Shop Page (Mobile, Tablet, Desktop)
-![Shop Wireframe](docs/readme-img/wireframes/shop_responsive.png)
-
-### Product Page (Mobile, Tablet, Desktop)
-![Product Wireframe](docs/readme-img/wireframes/product_responsive.png)
-
-### Cart, Checkout & Profile Pages (Mobile, Tablet, Desktop)
-![Other Pages Wireframe](docs/readme-img/wireframes/other_pages_responsive.png)
+See images in `docs/readme-img/wireframes/`.
 
 ---
 
@@ -159,278 +150,197 @@ Special attention was given to spacing, typography, and button styling to create
 
 - User registration and login system
 - Product listing with category filtering
-- Keyword search across product names and descriptions
-- Product sorting by price, rating, and category
-- Search result count and active filter indicators
-- Product detail pages with category navigation
-- Responsive layout for mobile, tablet, and desktop
+- Search and sorting
 - Secure Stripe checkout
-- User profile with order history
-- Admin dashboard for managing products
-- Custom 3D printing product catalogue created specifically for this project
-- Manually curated categories and products (not default course data)
-- Product data managed via Django admin and fixtures
+- Responsive design
+- Admin dashboard
 
 ---
 
 ## Improvements Beyond Course Material
 
-- Implemented robust image handling across product pages, shopping bag, and toast notifications,
-  supporting local images, external image URLs, and safe fallbacks.
-- Improved user feedback by ensuring all shopping bag actions redirect correctly
-  and display meaningful toast notifications without relying on JavaScript.
-- Refactored notification previews to handle real-world edge cases
-  not fully covered in the course examples.
-- Enhanced error handling and defensive coding practices
-  to improve stability and maintainability.
+- Robust image handling
+- Improved user feedback
+- Defensive coding practices
 
 ---
 
 ## Shopping Bag
 
-- Session-based shopping bag using Django sessions
-- Add products to the bag from the product detail page
-- Quantity selector with increment (+) and decrement (−) buttons on the product detail page
-- Update item quantities directly from the shopping bag
-- Remove items directly from the shopping bag
-- Quantity range limited to 1–99
-- Support for products with and without sizes
-- Optional product sizes (XS–XL) for applicable products
-- Same product with different sizes displayed as separate line items
-- Selected size displayed in the shopping bag
-- Subtotal calculated per product (price × quantity) using a custom Django template filter
-- Bag total, delivery cost, and grand total calculated automatically
-- Free delivery threshold logic
+- Session-based shopping bag
+- Quantity update and removal
+- Free delivery threshold
 
 ---
 
-### CRUD Functionality
+## CRUD Functionality
 
-The shopping bag demonstrates full CRUD functionality:
-
-- Create: users add products to the shopping bag
-- Read: users view bag contents and order summary
-- Update: users modify product quantities
-- Delete: users remove items from the bag
-
+- Create: add products to bag
+- Read: view bag contents
+- Update: change quantities
+- Delete: remove items
 
 ---
 
-### Checkout & Orders
+## Checkout & Orders
 
-- Checkout page with order summary (bag items, totals, delivery, grand total)
-- Order model with automatic order number generation
-- Order line items linked to products
-- Automatic calculation of order totals and delivery costs
-- Free delivery threshold logic
-- Custom checkout form with placeholders
-- Crispy Forms (Bootstrap styling) for checkout form layout
-- Stripe Elements integration for secure card input (PaymentIntent-based client secret)
-- Admin interface with inline order items
-- Automatic order total updates using Django signals
+- Order model with automatic order numbers
+- Stripe integration
+- Django signals for totals
 
-### Form Validation
+---
 
-The checkout process uses a Django form with server-side validation to ensure
-correct data is entered before an order is created. Required fields are validated,
-email format is checked, and validation errors are displayed to the user if input
-is missing or invalid.
+## Form Validation
 
-Additional validation is applied in the shopping bag to restrict quantity to a valid range.
+Checkout uses Django forms with server-side validation.
 
+---
 
 ## Payments
 
-- Stripe card payments
-- Loading overlay during payment processing
-- Webhook endpoint for payment verification (`/checkout/wh/`)
-- Order redundancy to prevent lost payments
-
-Stripe is integrated using PaymentIntents and Stripe Elements in test mode.
-All payments are verified via webhooks before orders are confirmed.
-
-
-### Environment Variables
-- STRIPE_PUBLIC_KEY
-- STRIPE_SECRET_KEY
-- STRIPE_WH_SECRET
+Stripe is integrated using PaymentIntents and webhooks.
 
 ---
 
 ## Data Model
 
-The main database models include:
-
-- User (Django default user model)
+- User
 - UserProfile
 - Category
 - Product
 - Order
 - OrderItem
 
-Some Django apps in this project (such as home, bag, and accounts) do not contain
-custom database models, as they focus on presentation logic, session handling,
-or authentication via third-party libraries. Core business logic and data storage
-are handled in dedicated apps such as products, checkout, and profiles.
-
+---
 
 ## Relationships
 
-- User (1) → (1) UserProfile
-- Category (1) → (many) Product
-- Order (1) → (many) OrderItem
-- Product (1) → (many) OrderItem
-
-These relationships ensure data integrity and efficient querying.
+- User → UserProfile
+- Category → Product
+- Order → OrderItem
+- Product → OrderItem
 
 ---
 
 ## Technologies Used
 
-- HTML, CSS, JavaScript
 - Python, Django
-- Stripe
 - PostgreSQL
-- GitHub
+- Stripe
 - Heroku
+- GitHub
 
 ---
 
 ## Technical Notes
 
-- Order totals and delivery costs are calculated automatically using Django model methods.
-- Django signals (post_save and post_delete) are used to ensure order totals are updated whenever order line items are added, updated, or removed.
-- Delivery cost logic is centralized in the Order model and respects a free delivery threshold.
-- Calculated fields such as order number, totals, and delivery cost are read-only in the admin interface to preserve data integrity.
-
-## Python Logic
-
-Custom Python logic is used throughout the project, including:
-
-- Delivery cost calculation using conditional logic (free delivery threshold).
-- Shopping bag and order total calculations using loops over bag items / order line items.
-- Automatic order total updates via Django model methods and signals.
+- Automatic total calculations
+- Django signals
+- Centralized delivery logic
 
 ---
 
+## Python Logic
+
+- Conditional delivery logic
+- Loops for totals
+- Signal-based updates
+
+---
 
 ## Apps
 
-The project is structured using multiple Django apps to separate responsibilities
-and improve maintainability.
-
-- home: homepage and core layout pages
-- accounts: user authentication and account management (Allauth integration)
-- products: product catalogue, categories, search, filtering, and sorting
-- bag: session-based shopping bag functionality
-- checkout: checkout flow, order handling, Stripe payments, and webhooks
-- profiles: user profiles and order history
-
+- home
+- accounts
+- products
+- bag
+- checkout
+- profiles
 
 ---
 
 ## Testing
 
-Manual testing was conducted throughout development to ensure:
-
-- Navigation links function correctly
-- Search, filter, and sorting features behave as expected
-- Forms validate input properly
-- Responsive design works on multiple screen sizes
-- Cross-browser compatibility
-
-Validation tools and Lighthouse audits were used to improve performance and accessibility.
-
-All major bugs encountered during development were resolved during implementation.
+Manual and responsive testing performed throughout development.
 
 ---
 
 ## Local Setup (Development)
 
-To run the project locally:
-
 ```bash
 git clone https://github.com/AmandaAlexandraStudio/3DPrints.git
 cd 3DPrints
 python -m venv .venv
-
-# Mac / Linux
 source .venv/bin/activate
-
-# Windows
-.venv\Scripts\activate
-
 pip install -r requirements.txt
 python manage.py migrate
-python manage.py createsuperuser
 python manage.py runserver
-```
+
 ---
 
 ## Deployment
 
-The project is deployed using Heroku.
+The project is deployed using Heroku and connected to a Heroku Postgres database.
+
+---
 
 ### Heroku Deployment Steps
 
-1. Create a Heroku application
+1. Create a Heroku application  
+2. Configure environment variables  
+3. Connect GitHub repository  
+4. Deploy the main branch  
+5. Set up PostgreSQL database  
 
-2. Configure environment variables
-
-3. Connect GitHub repository
-
-4. Deploy the main branch
-
-5. Set up PostgreSQL database
-
-```bsah
+```bash
 heroku run python manage.py migrate
 heroku run python manage.py collectstatic
 ```
 
-The project is deployed on Heroku and connected to a Heroku Postgres database.
+The live site is continuously deployed from GitHub.
 
+Security
 
-## Security
+Sensitive keys are stored in environment variables
 
-- Sensitive keys are stored in environment variables
-- Django DEBUG mode is disabled in production
-- User passwords are securely hashed
-- Payment processing is handled securely via Stripe
+Django DEBUG mode is disabled in production
 
----
-## Known Issues
+User passwords are securely hashed
 
-- Email confirmation is displayed in the console during local development.
-- Some admin features are restricted to superusers only.
+Payment processing is handled securely via Stripe
+
+Known Issues
+
+Email confirmation is displayed in the console during local development.
+
+Some admin features are restricted to superusers only.
 
 No critical bugs are currently known.
 
-## Bugs Fixed
+Bugs Fixed
 
-- Fixed duplicate "My Profile" entries in the account dropdown menu.
-- Corrected delivery cost calculation to ensure free delivery is applied above the threshold.
-- Ensured order totals update correctly when order line items are modified or deleted.
-- Resolved admin interface issues where calculated fields were incorrectly editable.
+Fixed duplicate "My Profile" entries in the account dropdown menu
 
+Corrected delivery cost calculation to ensure free delivery is applied above the threshold
 
----
+Ensured order totals update correctly when order line items are modified or deleted
 
+Resolved admin interface issues where calculated fields were incorrectly editable
 
-## Credits
+Credits
 
-- Django Documentation
+Django Documentation
 
-- Stripe Documentation
+Stripe Documentation
 
-- Online developer communities and forums
+Online developer communities and forums
 
-- Brian Macharia, my mentor
+Brian Macharia, mentor
 
-- Wireframes and design created by AmandaAlexandra
+Wireframes and design created by AmandaAlexandra
 
-- All product images and content created or licensed by the site owner
+All product images and content created or licensed by the site owner
 
-- Project created and developed by Amanda Alexandra (2026)
+Project created and developed by Amanda Alexandra (2026)
 
 
