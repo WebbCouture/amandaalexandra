@@ -2,15 +2,12 @@ import stripe
 
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render, reverse
-from django.views.decorators.csrf import csrf_exempt
 
 from bag.contexts import bag_contents
 from products.models import Product
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from .webhook_handler import StripeWH_Handler
 
 
 def checkout(request):
@@ -66,8 +63,9 @@ def checkout(request):
             # Valfritt: spara info-flagga i session (används senare i kursen)
             request.session["save_info"] = "save-info" in request.POST
 
-            return redirect(reverse("checkout_success",
-                                    args=[order.order_number]))
+            return redirect(
+                reverse("checkout_success", args=[order.order_number])
+            )
 
         messages.error(
             request,
@@ -113,35 +111,3 @@ def checkout_success(request, order_number):
         "checkout/checkout_success.html",
         {"order": order},
     )
-
-
-@csrf_exempt
-def webhook(request):
-    """Listen for webhooks from Stripe"""
-    stripe.api_key = settings.STRIPE_SECRET_KEY
-    wh_secret = settings.STRIPE_WH_SECRET
-
-    payload = request.body
-    sig_header = request.META.get("HTTP_STRIPE_SIGNATURE", "")
-
-    try:
-        event = stripe.Webhook.construct_event(payload, sig_header, wh_secret)
-    except ValueError:
-        # Invalid payload
-        return HttpResponse(status=400)
-    except stripe.error.SignatureVerificationError:
-        # Invalid signature
-        return HttpResponse(status=400)
-
-    handler = StripeWH_Handler(request)
-
-    # Map webhook events to handler functions
-    event_map = {
-        "payment_intent.succeeded": handler.handle_event,
-        "payment_intent.payment_failed": handler.handle_event,
-    }
-
-    event_type = event["type"]
-    event_handler = event_map.get(event_type, handler.handle_event)
-
-    return event_handler(event)
