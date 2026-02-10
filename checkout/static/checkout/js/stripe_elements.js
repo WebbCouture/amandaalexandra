@@ -1,5 +1,10 @@
 /* global Stripe */
 
+/*
+  Core logic/payment flow inspired by:
+  https://stripe.com/docs/payments/accept-a-payment
+*/
+
 (function () {
   const form = document.getElementById('payment-form');
   if (!form) return;
@@ -23,38 +28,59 @@
   const stripe = Stripe(stripePublicKey);
   const elements = stripe.elements();
 
-  const card = elements.create('card');
+  // Optional: style (matches course-ish look)
+  const style = {
+    base: {
+      color: '#000',
+      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontSmoothing: 'antialiased',
+      fontSize: '16px',
+      '::placeholder': { color: '#aab7c4' },
+    },
+    invalid: {
+      color: '#dc3545',
+      iconColor: '#dc3545',
+    },
+  };
+
+  const card = elements.create('card', { style });
   card.mount('#card-element');
 
-  // Live validation errors
+  // Realtime validation errors
   card.addEventListener('change', (event) => {
-    cardErrors.textContent = event.error ? event.error.message : '';
+    if (event.error) {
+      cardErrors.textContent = event.error.message;
+    } else {
+      cardErrors.textContent = '';
+    }
   });
 
-  // Helper: toggle UI while processing
-  function setLoading(isLoading) {
-    if (submitButton) submitButton.disabled = isLoading;
-    if (!loadingOverlay) return;
+  // "Fade toggle" without jQuery (simple + reliable)
+  function setProcessing(isProcessing) {
+    // Disable only Stripe + submit (do NOT disable CSRF or hidden inputs)
+    card.update({ disabled: isProcessing });
+    if (submitButton) submitButton.disabled = isProcessing;
 
-    if (isLoading) {
-      loadingOverlay.classList.remove('d-none');
-    } else {
-      loadingOverlay.classList.add('d-none');
+    // Visually hide/disable the form UI (but keep inputs enabled so CSRF submits)
+    form.style.opacity = isProcessing ? '0.5' : '1';
+    form.style.pointerEvents = isProcessing ? 'none' : 'auto';
+
+    // Show/hide overlay
+    if (loadingOverlay) {
+      loadingOverlay.classList.toggle('d-none', !isProcessing);
     }
   }
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    cardErrors.textContent = '';
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    setProcessing(true);
 
-    // Grab billing details from your crispy fields (they usually use id_*)
     const fullName = document.getElementById('id_full_name');
     const email = document.getElementById('id_email');
 
     const result = await stripe.confirmCardPayment(clientSecret, {
       payment_method: {
-        card: card,
+        card,
         billing_details: {
           name: fullName ? fullName.value.trim() : '',
           email: email ? email.value.trim() : '',
@@ -64,11 +90,16 @@
 
     if (result.error) {
       cardErrors.textContent = result.error.message;
-      setLoading(false);
+      setProcessing(false);
       return;
     }
 
-    // Success: submit form to Django (create Order, etc.)
-    form.submit();
+    if (result.paymentIntent && result.paymentIntent.status === 'succeeded') {
+      form.submit();
+      return;
+    }
+
+    // Fallback
+    setProcessing(false);
   });
 })();

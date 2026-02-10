@@ -33,3 +33,27 @@
     right: .5rem;
     padding: 0 .5rem;
 }
+
+/* -------------------------------
+   Loading overlay (Stripe processing)
+-------------------------------- */
+
+#loading-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(23, 162, 184, 0.85); /* "transparent blue" overlay */
+    z-index: 9999;
+}
+
+.loading-spinner {
+    margin: 0;
+}
