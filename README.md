@@ -190,14 +190,17 @@ Special attention was given to spacing, typography, and button styling to create
 
 ### Checkout & Orders
 
-- Secure checkout system with order tracking
+- Checkout page with order summary (bag items, totals, delivery, grand total)
 - Order model with automatic order number generation
 - Order line items linked to products
 - Automatic calculation of order totals and delivery costs
 - Free delivery threshold logic
 - Custom checkout form with placeholders
+- Crispy Forms (Bootstrap styling) for checkout form layout
+- Stripe Elements integration for secure card input (PaymentIntent-based client secret)
 - Admin interface with inline order items
 - Automatic order total updates using Django signals
+
 
 ---
 
