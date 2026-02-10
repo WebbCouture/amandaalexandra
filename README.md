@@ -236,7 +236,13 @@ The main database models include:
 - Order
 - OrderItem
 
-### Relationships
+Some Django apps in this project (such as home, bag, and accounts) do not contain
+custom database models, as they focus on presentation logic, session handling,
+or authentication via third-party libraries. Core business logic and data storage
+are handled in dedicated apps such as products, checkout, and profiles.
+
+
+## Relationships
 
 - User (1) → (1) UserProfile
 - Category (1) → (many) Product
@@ -264,6 +270,22 @@ These relationships ensure data integrity and efficient querying.
 - Django signals (post_save and post_delete) are used to ensure order totals are updated whenever order line items are added, updated, or removed.
 - Delivery cost logic is centralized in the Order model and respects a free delivery threshold.
 - Calculated fields such as order number, totals, and delivery cost are read-only in the admin interface to preserve data integrity.
+
+---
+
+
+## Apps
+
+The project is structured using multiple Django apps to separate responsibilities
+and improve maintainability.
+
+- home: homepage and core layout pages
+- accounts: user authentication and account management (Allauth integration)
+- products: product catalogue, categories, search, filtering, and sorting
+- bag: session-based shopping bag functionality
+- checkout: checkout flow, order handling, Stripe payments, and webhooks
+- profiles: user profiles and order history
+
 
 ---
 
