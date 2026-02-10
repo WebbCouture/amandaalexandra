@@ -198,6 +198,18 @@ Special attention was given to spacing, typography, and button styling to create
 
 ---
 
+### CRUD Functionality
+
+The shopping bag demonstrates full CRUD functionality:
+
+- Create: users add products to the shopping bag
+- Read: users view bag contents and order summary
+- Update: users modify product quantities
+- Delete: users remove items from the bag
+
+
+---
+
 ### Checkout & Orders
 
 - Checkout page with order summary (bag items, totals, delivery, grand total)
