@@ -188,6 +188,19 @@ Special attention was given to spacing, typography, and button styling to create
 
 ---
 
+### Checkout & Orders
+
+- Secure checkout system with order tracking
+- Order model with automatic order number generation
+- Order line items linked to products
+- Automatic calculation of order totals and delivery costs
+- Free delivery threshold logic
+- Custom checkout form with placeholders
+- Admin interface with inline order items
+- Automatic order total updates using Django signals
+
+---
+
 ## Data Model
 
 The main database models include:
@@ -211,6 +224,15 @@ Relationships are designed to ensure data integrity and efficient querying.
 - PostgreSQL
 - GitHub
 - Heroku
+
+---
+
+## Technical Notes
+
+- Order totals and delivery costs are calculated automatically using Django model methods.
+- Django signals (post_save and post_delete) are used to ensure order totals are updated whenever order line items are added, updated, or removed.
+- Delivery cost logic is centralized in the Order model and respects a free delivery threshold.
+- Calculated fields such as order number, totals, and delivery cost are read-only in the admin interface to preserve data integrity.
 
 ---
 
@@ -287,6 +309,14 @@ heroku run python manage.py collectstatic
 - Some admin features are restricted to superusers only.
 
 No critical bugs are currently known.
+
+## Bugs Fixed
+
+- Fixed duplicate "My Profile" entries in the account dropdown menu.
+- Corrected delivery cost calculation to ensure free delivery is applied above the threshold.
+- Ensured order totals update correctly when order line items are modified or deleted.
+- Resolved admin interface issues where calculated fields were incorrectly editable.
+
 
 ---
 
