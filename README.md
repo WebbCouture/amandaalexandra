@@ -1,6 +1,6 @@
 # AmandaAlexandra – 3D Print Shop
 Live Site: Coming soon (deployment in progress)
-
+GLÖM EJ LÄGGA TILL ADMIN INLOG LÖSEN OSV!!
 
 ## Project Overview
 
