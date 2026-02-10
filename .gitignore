@@ -1,6 +1,7 @@
 # Virtual env / secrets
 .venv/
 .env
+.env_backup
 
 # Python
 __pycache__/
@@ -14,3 +15,7 @@ staticfiles/
 # OS / editor
 .vscode/
 .DS_Store
+
+# env.py
+env.py
+

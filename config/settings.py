@@ -5,41 +5,59 @@ Django settings for config project.
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
 
 # Base directory
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Load .env from project root (same level as manage.py)
-load_dotenv(BASE_DIR / ".env")
+
+# ======================
+# LOAD ENV (env.py) - course style
+# ======================
+# env.py must be in project root (same level as manage.py)
+# and must be in .gitignore
+if (BASE_DIR / "env.py").is_file():
+    import env  # noqa: F401
 
 
 # ======================
 # SECURITY
 # ======================
 
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.getenv("SECRET_KEY")
 if not SECRET_KEY:
-    raise ValueError("SECRET_KEY saknas! Lägg den i .env-filen.")
+    raise ValueError(
+        "SECRET_KEY saknas! Lägg den i env.py "
+        "(eller sätt den i environment)."
+    )
 
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 
-# Stripe keys
-STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
-
-if not STRIPE_PUBLIC_KEY or not STRIPE_SECRET_KEY:
-    print("⚠️ Stripe keys saknas i .env")
-
-
 ALLOWED_HOSTS = [
     host.strip()
-    for host in os.environ.get(
+    for host in os.getenv(
         "ALLOWED_HOSTS",
-        "127.0.0.1,localhost"
+        "127.0.0.1,localhost",
     ).split(",")
+    if host.strip()
 ]
+
+
+# ======================
+# STRIPE
+# ======================
+
+STRIPE_CURRENCY = os.getenv("STRIPE_CURRENCY", "usd")
+
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY", "")
+STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "")
+STRIPE_WH_SECRET = os.getenv("STRIPE_WH_SECRET", "")
+
+if not STRIPE_PUBLIC_KEY or not STRIPE_SECRET_KEY:
+    print(
+        "⚠️ Stripe keys saknas (STRIPE_PUBLIC_KEY / STRIPE_SECRET_KEY). "
+        "Kolla env.py."
+    )
 
 
 # ======================
@@ -225,11 +243,19 @@ LOGIN_URL = "/accounts/login/"
 LOGIN_REDIRECT_URL = "/profile/"
 LOGOUT_REDIRECT_URL = "/"
 
+
+# ======================
+# SHOP SETTINGS
+# ======================
+
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
+
 
 # ======================
 # MESSAGES (TOASTS)
 # ======================
 
-MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+MESSAGE_STORAGE = (
+    "django.contrib.messages.storage.session.SessionStorage"
+)
