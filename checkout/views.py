@@ -27,10 +27,14 @@ def checkout(request):
             order = order_form.save(commit=False)
 
             # Stripe PID från client_secret (kräver hidden input i templaten)
-            client_secret = request.POST.get("client_secret", "")
-            stripe_pid = client_secret.split("_secret")[0] if client_secret else ""
-            order.stripe_pid = stripe_pid
+            client_secret = request.POST.get("client_secret")
 
+            if client_secret:
+                stripe_pid = client_secret.split('_secret')[0]
+            else:
+                stripe_pid = None
+
+            order.stripe_pid = stripe_pid
             order.save()
 
             # Skapa line items från bag
