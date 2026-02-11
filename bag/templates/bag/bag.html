@@ -35,7 +35,7 @@
                         <tbody>
                             {% for item in bag_items %}
                             <tr>
-                                <td class="p-3 w-25">
+                                <td class="p-3 w-25" data-label="Image">
                                    {% if item.product.image %}
                                        <img class="order-summary-image"
                                             src="{{ item.product.image.url }}"
@@ -51,8 +51,7 @@
                                    {% endif %}
                                 </td>
 
-
-                                <td class="py-3">
+                                <td class="py-3" data-label="Product">
                                     <p class="my-0"><strong>{{ item.product.name }}</strong></p>
 
                                     {% if item.size %}
@@ -68,11 +67,11 @@
                                     {% endif %}
                                 </td>
 
-                                <td class="py-3">
+                                <td class="py-3" data-label="Price">
                                     <p class="my-0">${{ item.product.price }}</p>
                                 </td>
 
-                                <td class="py-3">
+                                <td class="py-3" data-label="Quantity">
 
                                     <form method="POST"
                                           action="{% url 'adjust_bag' item.item_id %}"
@@ -141,7 +140,7 @@
 
                                 </td>
 
-                                <td class="py-3">
+                                <td class="py-3" data-label="Subtotal">
                                     <p class="my-0">
                                         ${{ item.product.price|calc_subtotal:item.quantity|floatformat:2 }}
                                     </p>
@@ -149,7 +148,7 @@
                             </tr>
                             {% endfor %}
 
-                            <tr>
+                            <tr class="summary-row">
                                 <td colspan="5" class="pt-5 text-right">
                                     <p class="mb-1">
                                         <strong>Bag Total: ${{ total|floatformat:2 }}</strong>
@@ -170,7 +169,7 @@
                                 </td>
                             </tr>
 
-                            <tr>
+                            <tr class="summary-row">
                                 <td colspan="5" class="text-right">
 
                                     <a href="{% url 'product_list' %}"

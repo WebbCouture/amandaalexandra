@@ -2,7 +2,6 @@ html {
     height: 100%;
 }
 
-/* Prevent horizontal scroll issues on small screens */
 html,
 body {
     overflow-x: hidden;
@@ -16,7 +15,6 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-/* White background overlay */
 .overlay {
     height: 100%;
     width: 100%;
@@ -27,7 +25,6 @@ body {
     z-index: -1;
 }
 
-/* Keep FontAwesome icons centered */
 .icon {
     align-items: center;
     display: inline-flex;
@@ -52,7 +49,6 @@ body {
     border: 1px solid #000 !important;
 }
 
-/* Buttons */
 .btn-black {
     background: black;
     color: white;
@@ -110,11 +106,9 @@ body {
     cursor: pointer;
 }
 
-/* -------------------- Toasts (Bootstrap Messages) */
-
 .message-container {
     position: fixed;
-    top: 164px; /* matchar din desktop padding-top */
+    top: 164px;
     right: 15px;
     z-index: 99999999999;
 }
@@ -127,19 +121,17 @@ body {
     height: 4px;
 }
 
-/* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
 .arrow-up {
     width: 0;
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-bottom: 10px solid black; /* default */
+    border-bottom: 10px solid black;
     position: absolute;
     top: -10px;
-    right: 36px; /* matchar skolans placering */
+    right: 36px;
 }
 
-/* Convenience classes - colors copied from Bootstrap */
 .arrow-primary {
     border-bottom-color: #007bff !important;
 }
@@ -172,24 +164,30 @@ body {
     border-bottom-color: #343a40 !important;
 }
 
-/* Bag preview in success toast */
 .bag-notification-wrapper {
     max-height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
-/* -------------------------------- Media Queries */
-
-/* Slightly larger container on xl screens */
 @media (min-width: 1200px) {
     .container {
         max-width: 80%;
     }
 }
 
-/* Desktop: fixed header + push page content down */
-@media (min-width: 992px) {
+/* Mobile icons: ONLY on small screens */
+.mobile-header-only {
+    display: none !important;
+}
+
+@media (max-width: 744px) {
+    .mobile-header-only {
+        display: inline-block !important;
+    }
+}
+
+@media (min-width: 1100px) {
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -198,45 +196,76 @@ body {
         z-index: 1030;
     }
 
-    /* Push content down so it doesn't sit behind the fixed header */
     body {
-        padding-top: 164px; /* justera om du vill: 140–190px */
+        padding-top: 164px;
     }
 
-    /* IMPORTANT: avoid double spacing on desktop */
     .header-container {
         padding-top: 0;
     }
+
+    .message-container {
+        top: 164px;
+    }
 }
 
-/* Mobile/Tablet: header spacing */
-@media (max-width: 991px) {
+@media (min-width: 745px) and (max-width: 1099px) {
+    body {
+        padding-top: 0;
+    }
+
     .header-container {
-        padding-top: 116px;
+        padding-top: 132px;
     }
 
-    /* Toasts: matchar din header-container padding-top */
     .message-container {
-        top: 116px;
+        top: 132px;
     }
 
-    /* Avoid unintended horizontal offsets from header rows */
     header .row {
         margin-left: 0;
         margin-right: 0;
     }
 }
 
-/* Checkout + Bag product image fix */
+@media (max-width: 744px) {
+    body {
+        padding-top: 0;
+    }
 
-.order-summary-image {
-    width: 100%;
-    height: 90px;
-    object-fit: cover;
-    border-radius: 4px;
+    .header-container {
+        padding-top: 116px;
+    }
+
+    .message-container {
+        top: 116px;
+    }
+
+    header .row {
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
-/* Product thumbnails (bag + checkout) */
+@media (min-width: 507px) {
+    .search-bar-container,
+    .search-bar {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+
+    .search-bar-container form,
+    .search-bar form {
+        width: min(720px, 100%);
+    }
+
+    .search-bar-container .input-group,
+    .search-bar .input-group {
+        width: 100%;
+    }
+}
 
 .order-summary-image {
     width: 100%;
@@ -245,8 +274,6 @@ body {
     border-radius: 4px;
     display: block;
 }
-
-/* Bag: qty input sizing (small screens) */
 
 .bag-container .input-group {
     display: flex;
@@ -277,16 +304,168 @@ body {
     min-width: 36px;
 }
 
-@media (max-width: 420px) {
-    .bag-container .input-group {
-        width: 140px;
-    }
-
+@media (max-width: 744px) {
     .bag-container .quantity_input,
     .bag-container .qty_input,
     .bag-container .input-group .form-control {
-        width: 64px;
-        min-width: 64px;
+        width: 48px;
+        min-width: 48px;
+        font-size: 0.85rem;
+    }
+
+    .bag-container .input-group .btn {
+        min-width: 34px;
     }
 }
 
+@media (min-width: 507px) {
+    .bag-container .table {
+        border-collapse: separate;
+        border-spacing: 0 12px;
+    }
+
+    .bag-container .table tbody tr {
+        background: #fff;
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .bag-container .table tbody td {
+        border-top: 1px solid #dee2e6;
+        border-bottom: 1px solid #dee2e6;
+        vertical-align: middle;
+    }
+
+    .bag-container .table tbody td:first-child {
+        border-left: 1px solid #dee2e6;
+        border-top-left-radius: 0.5rem;
+        border-bottom-left-radius: 0.5rem;
+    }
+
+    .bag-container .table tbody td:last-child {
+        border-right: 1px solid #dee2e6;
+        border-top-right-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+    }
+
+    .bag-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .bag-actions form {
+        margin: 0 !important;
+    }
+}
+
+@media (max-width: 506px) {
+
+    .bag-container table,
+    .bag-container tbody,
+    .bag-container tr,
+    .bag-container td {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    .bag-container thead {
+        display: none !important;
+    }
+
+    .bag-container tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        background: #fff;
+    }
+
+    .bag-container td {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.75rem;
+
+        padding: 0.6rem 0.5rem !important;
+        border-bottom: 1px solid #f1f1f1;
+        text-align: right;
+        flex-wrap: wrap;
+    }
+
+    .bag-container td:last-child {
+        border-bottom: none;
+    }
+
+    .bag-container td[data-label]::before {
+        content: attr(data-label);
+        font-weight: 700;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        color: #555;
+
+        flex: 1 0 100%;
+        text-align: left;
+        margin-bottom: 0.25rem;
+    }
+
+    .bag-container td.w-25 {
+        justify-content: center;
+        background: #f8f9fa;
+        margin: -0.5rem -0.5rem 0.5rem -0.5rem;
+        border-radius: 0.5rem 0.5rem 0 0;
+        border-bottom: none;
+    }
+
+    .bag-container td.w-25::before {
+        display: none;
+    }
+
+    .bag-container .order-summary-image {
+        width: 100%;
+        max-width: 160px;
+        height: auto;
+    }
+
+    .bag-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .bag-actions form {
+        margin: 0 !important;
+    }
+
+    .bag-container td form,
+    .bag-container td .input-group {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .bag-container tr.summary-row {
+        border: none;
+        background: transparent;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    .bag-container tr.summary-row td {
+        display: block !important;
+        border: none;
+        padding: 0.25rem 0 !important;
+        text-align: right;
+    }
+
+    .bag-container tr.summary-row td::before {
+        display: none;
+    }
+
+    .bag-container tr.summary-row .btn-lg {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

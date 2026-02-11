@@ -1,7 +1,6 @@
 <ul class="list-inline list-unstyled text-center my-0">
 
-    <!-- Search -->
-    <li class="list-inline-item d-block d-lg-none dropdown">
+    <li class="list-inline-item d-block mobile-header-only dropdown">
         <a class="text-black nav-link"
            href="#"
            id="mobile-search"
@@ -29,8 +28,7 @@
         </div>
     </li>
 
-    <!-- Account -->
-    <li class="list-inline-item dropdown d-block d-lg-none">
+    <li class="list-inline-item dropdown d-block mobile-header-only">
         <a class="text-black nav-link"
            href="#"
            id="user-options-mobile"
@@ -50,8 +48,7 @@
         </div>
     </li>
 
-    <!-- Bag -->
-    <li class="list-inline-item d-block d-lg-none">
+    <li class="list-inline-item d-block mobile-header-only">
         <a class="{% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
            href="{% url 'view_bag' %}">
             <i class="fas fa-shopping-bag fa-lg"></i>
