@@ -8,6 +8,13 @@ from products.models import Product
 
 
 class Order(models.Model):
+    user_profile = models.ForeignKey(
+        "profiles.UserProfile",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="orders",
+    )
     order_number = models.CharField(
         max_length=32,
         null=False,
