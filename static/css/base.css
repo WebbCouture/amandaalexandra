@@ -246,4 +246,47 @@ body {
     display: block;
 }
 
+/* Bag: qty input sizing (small screens) */
+
+.bag-container .input-group {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: clamp(120px, 15vw, 150px);
+}
+
+.bag-container .input-group-prepend,
+.bag-container .input-group-append {
+    flex: 0 0 auto;
+    display: flex;
+}
+
+.bag-container .quantity_input,
+.bag-container .qty_input,
+.bag-container .input-group .form-control {
+    flex: 0 0 auto;
+    width: 56px;
+    min-width: 56px;
+    text-align: center;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
+
+.bag-container .input-group .btn {
+    flex: 0 0 auto;
+    min-width: 36px;
+}
+
+@media (max-width: 420px) {
+    .bag-container .input-group {
+        width: 140px;
+    }
+
+    .bag-container .quantity_input,
+    .bag-container .qty_input,
+    .bag-container .input-group .form-control {
+        width: 64px;
+        min-width: 64px;
+    }
+}
 
