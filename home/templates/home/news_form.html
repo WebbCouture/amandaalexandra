@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="overlay"></div>
+
+<div class="container mt-5">
+  <h2 class="logo-font mb-4">
+    {% if is_edit %}Edit News{% else %}Add News{% endif %}
+  </h2>
+
+  <form method="POST" class="mb-3">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-black rounded-0" type="submit">
+      {% if is_edit %}Save{% else %}Create{% endif %}
+    </button>
+    <a class="btn btn-outline-dark rounded-0" href="{% url 'news_list' %}">Cancel</a>
+  </form>
+</div>
+{% endblock %}

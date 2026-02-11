@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="overlay"></div>
+
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h2 class="logo-font mb-0">{{ article.title }}</h2>
+
+    {% if request.user.is_superuser %}
+      <div>
+        <a class="btn btn-outline-dark rounded-0" href="{% url 'news_edit' article.slug %}">Edit</a>
+        <a class="btn btn-outline-danger rounded-0" href="{% url 'news_delete' article.slug %}">Delete</a>
+      </div>
+    {% endif %}
+  </div>
+
+  <p class="text-muted mb-4">{{ article.created_at|date:"Y-m-d H:i" }}</p>
+
+  {% if article.excerpt %}
+    <p class="lead">{{ article.excerpt }}</p>
+  {% endif %}
+
+  <div>
+    {{ article.content|linebreaks }}
+  </div>
+
+  <div class="mt-4">
+    <a class="btn btn-black rounded-0" href="{% url 'news_list' %}">Back to News</a>
+  </div>
+</div>
+{% endblock %}
