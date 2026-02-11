@@ -29,8 +29,8 @@ Live Site: https://fast-peak-51750-1269072e4677.herokuapp.com/
 - [Apps](#apps)
 - [Testing](#testing)
 - [Local Setup](#local-setup-development)
-- [Deployment](#deplo)
-- [Security](#)
+- [Deployment](#deployment)
+- [Security](#security)
 - [Known Issues](#known-issues)
 - [Bugs Fixed](#bugs-fixed)
 - [Credits](#credits)
@@ -84,74 +84,78 @@ provide customers with personalized products.
 ## User Stories
 
 ### Viewing and Navigation
-- As a shopper, I want to view a list of products so that I can choose items to purchase.
-- As a shopper, I want to view product details so that I can make informed decisions.
-- As a shopper, I want to search products by keyword so that I can find items quickly.
-- As a shopper, I want to filter products by category so that I can narrow down my choices.
-- As a shopper, I want to sort products by price, rating, or category so that I can browse efficiently.
+
+- View product lists
+- View product details
+- Search products
+- Filter by category
+- Sort by price and rating
 
 ### Account Management
-- As a user, I want to register and log in so that I can access my profile.
-- As a user, I want to reset my password if I forget it.
+
+- Register and log in
+- Reset password
 
 ### Authentication
 
-The website includes a user authentication system implemented with
-django-allauth. Users can register, log in, and log out. Authentication
-state is reflected in the navigation menu across the site.
+Authentication is implemented using django-allauth.
 
 ### Purchasing
-- As a shopper, I want to add items to my cart so that I can purchase multiple products.
-- As a shopper, I want to securely pay for my order using Stripe.
+
+- Add items to bag
+- Checkout securely with Stripe
 
 ---
 
 ## User Experience (UX)
 
 ### Strategy Plane
-The website is designed for users who want to purchase stylish and custom 3D printed
-products online.
+
+Simple and secure shopping experience.
 
 ### Scope Plane
-- User authentication system
-- Product listings with search, filtering, and sorting
-- Shopping cart functionality
-- Stripe payment integration
+
+- Authentication
+- Product browsing
+- Shopping cart
+- Payments
 
 ### Structure Plane
+
 - Home
 - Shop
-- Cart / Checkout
+- Cart
+- Checkout
 - Profile
 
 ### Skeleton Plane
-Wireframes were created for mobile, tablet, and desktop views.
+
+Wireframes used for layout planning.
 
 ### Surface Plane
-The visual design uses a soft pink and purple color scheme to reflect the
-AmandaAlexandra brand identity.
+
+Soft pink and purple brand styling.
 
 ---
 
 ## Design and Visual Customisation
 
-The website design was inspired by the course material but customised to reflect
-the AmandaAlexandra brand identity.
+Customised UI based on course material and branding.
 
 ---
 
 ## Wireframes
 
-See images in `docs/readme-img/wireframes/`.
+Located in `docs/readme-img/wireframes/`.
 
 ---
 
 ## Features
 
-- User registration and login system
-- Product listing with category filtering
+- Authentication system
+- Product filtering
 - Search and sorting
-- Secure Stripe checkout
+- Stripe checkout
 - Responsive design
 - Admin dashboard
 
@@ -159,46 +163,47 @@ See images in `docs/readme-img/wireframes/`.
 
 ## Improvements Beyond Course Material
 
-- Robust image handling
-- Improved user feedback
-- Defensive coding practices
+- Improved image handling
+- Enhanced user feedback
+- Defensive coding
 
 ---
 
 ## Shopping Bag
 
-- Session-based shopping bag
-- Quantity update and removal
+- Session-based bag
+- Quantity updates
+- Removal
 - Free delivery threshold
 
 ---
 
 ## CRUD Functionality
 
-- Create: add products to bag
-- Read: view bag contents
-- Update: change quantities
-- Delete: remove items
+- Create: add to bag
+- Read: view bag
+- Update: modify quantity
+- Delete: remove item
 
 ---
 
 ## Checkout & Orders
 
-- Order model with automatic order numbers
+- Automatic order numbers
 - Stripe integration
-- Django signals for totals
+- Django signals
 
 ---
 
 ## Form Validation
 
-Checkout uses Django forms with server-side validation.
+Django forms validate checkout data.
 
 ---
 
 ## Payments
 
-Stripe is integrated using PaymentIntents and webhooks.
+Stripe PaymentIntents and webhooks.
 
 ---
 
@@ -224,7 +229,8 @@ Stripe is integrated using PaymentIntents and webhooks.
 
 ## Technologies Used
 
-- Python, Django
+- Python
+- Django
 - PostgreSQL
 - Stripe
 - Heroku
@@ -234,7 +240,7 @@ Stripe is integrated using PaymentIntents and webhooks.
 
 ## Technical Notes
 
-- Automatic total calculations
+- Automatic totals
 - Django signals
 - Centralized delivery logic
 
@@ -242,9 +248,9 @@ Stripe is integrated using PaymentIntents and webhooks.
 
 ## Python Logic
 
-- Conditional delivery logic
-- Loops for totals
-- Signal-based updates
+- Conditional delivery
+- Loop calculations
+- Signal updates
 
 ---
 
@@ -261,7 +267,7 @@ Stripe is integrated using PaymentIntents and webhooks.
 
 ## Testing
 
-Manual and responsive testing performed throughout development.
+Manual and responsive testing performed.
 
 ---
 
@@ -275,72 +281,50 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+```
 
 ---
 
 ## Deployment
 
-The project is deployed using Heroku and connected to a Heroku Postgres database.
+Deployed on Heroku with PostgreSQL.
 
----
-
-### Heroku Deployment Steps
-
-1. Create a Heroku application  
-2. Configure environment variables  
-3. Connect GitHub repository  
-4. Deploy the main branch  
-5. Set up PostgreSQL database  
+### Heroku Steps
 
 ```bash
 heroku run python manage.py migrate
 heroku run python manage.py collectstatic
 ```
 
-The live site is continuously deployed from GitHub.
+---
 
-Security
+## Security
 
-Sensitive keys are stored in environment variables
+- Environment variables for secrets
+- DEBUG disabled in production
+- Secure password hashing
+- Stripe payments
 
-Django DEBUG mode is disabled in production
+---
 
-User passwords are securely hashed
+## Known Issues
 
-Payment processing is handled securely via Stripe
+- Email confirmation shown in console
 
-Known Issues
+---
 
-Email confirmation is displayed in the console during local development.
+## Bugs Fixed
 
-Some admin features are restricted to superusers only.
+- Profile menu duplication
+- Delivery calculation bugs
+- Admin field issues
 
-No critical bugs are currently known.
+---
 
-Bugs Fixed
+## Credits
 
-Fixed duplicate "My Profile" entries in the account dropdown menu
-
-Corrected delivery cost calculation to ensure free delivery is applied above the threshold
-
-Ensured order totals update correctly when order line items are modified or deleted
-
-Resolved admin interface issues where calculated fields were incorrectly editable
-
-Credits
-
-Django Documentation
-
-Stripe Documentation
-
-Online developer communities and forums
-
-Brian Macharia, mentor
-
-Wireframes and design created by AmandaAlexandra
-
-All product images and content created or licensed by the site owner
-
-Project created and developed by Amanda Alexandra (2026)
-
-
+- Django Documentation
+- Stripe Documentation
+- Developer communities and online forums
+- Family, friends, and Brian Macharia, my mentor
+- Project created by Amanda Alexandra (2026)
