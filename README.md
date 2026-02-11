@@ -4,69 +4,62 @@ Live Site: https://fast-peak-51750-1269072e4677.herokuapp.com/
 
 ---
 
-## 📑 Table of Contents
+## Project Overview
 
-- [Project Overview](#project-overview)
-- [Tech Stack](#tech-stack)
-- [User Goals](#user-goals)
-- [Site Owner Goals](#site-owner-goals)
-- [User Stories](#user-stories)
-- [User Experience (UX)](#user-experience-ux)
-- [Design and Visual Customisation](#design-and-visual-customisation)
-- [Wireframes](#wireframes)
-- [Features](#features)
-- [Improvements Beyond Course Material](#improvements-beyond-course-material)
-- [Shopping Bag](#shopping-bag)
-- [CRUD Functionality](#crud-functionality)
-- [Checkout & Orders](#checkout--orders)
-- [Form Validation](#form-validation)
-- [Payments](#payments)
-- [Data Model](#data-model)
-- [Relationships](#relationships)
-- [Technologies Used](#technologies-used)
-- [Technical Notes](#technical-notes)
-- [Python Logic](#python-logic)
-- [Apps](#apps)
-- [Testing](#testing)
-- [Local Setup](#local-setup-development)
-- [Deployment](#deployment)
-- [Security](#security)
-- [Known Issues](#known-issues)
-- [Bugs Fixed](#bugs-fixed)
-- [Credits](#credits)
+AmandaAlexandra is a full-stack e-commerce platform for selling custom 3D printed products.
+Users can browse products, create accounts, and complete secure online purchases using Stripe.
+
+The platform is designed for small-scale digital manufacturing and focuses on usability,
+security, and responsive design.
+
+This project was developed as part of the Code Institute Diploma in Full Stack Software Development.
 
 ---
 
-## Project Overview
+## Table of Contents
 
-AmandaAlexandra is an e-commerce platform for selling custom 3D printed products.
-The website allows users to browse products, create accounts, and securely
-purchase items online using Stripe.
-
-The platform is designed to support small-scale digital manufacturing and
-provide customers with personalized products.
+- Project Overview
+- Tech Stack
+- User Goals
+- Site Owner Goals
+- User Experience (UX)
+- Agile Development
+- Features
+- CRUD Functionality
+- Shopping Bag
+- Checkout & Orders
+- Payments
+- Data Model
+- Testing and Validation
+- Local Setup
+- Deployment
+- Security
+- Known Issues
+- Bugs Fixed
+- Credits
 
 ---
 
 ## Tech Stack
 
-- Python 3.x
+- Python 3
 - Django 3.2
-- PostgreSQL (production) / SQLite (development)
+- PostgreSQL (Production)
+- SQLite (Development)
 - HTML, CSS, JavaScript
 - Stripe API
 - Heroku
+- GitHub
 
 ---
 
 ## User Goals
 
-- Easily browse and purchase 3D printed products
-- View clear product images and descriptions
-- Search, filter, and sort products efficiently
-- Complete secure online payments
-- Use the website on mobile, tablet, and desktop devices
-- Feel confident using a secure and reliable platform
+- Browse and purchase products easily
+- Create and manage personal accounts
+- Track order history
+- Complete secure payments
+- Use the site on all devices
 
 ---
 
@@ -75,199 +68,242 @@ provide customers with personalized products.
 - Sell 3D printed products online
 - Manage products and categories
 - Track customer orders
-- Build the AmandaAlexandra brand
-- Provide a smooth and professional shopping experience
-- Create a scalable online business
-
----
-
-## User Stories
-
-### Viewing and Navigation
-
-- View product lists
-- View product details
-- Search products
-- Filter by category
-- Sort by price and rating
-
-### Account Management
-
-- Register and log in
-- Reset password
-
-### Authentication
-
-Authentication is implemented using django-allauth.
-
-### Purchasing
-
-- Add items to bag
-- Checkout securely with Stripe
+- Maintain brand identity
+- Provide a professional shopping experience
 
 ---
 
 ## User Experience (UX)
 
-### Strategy Plane
+The site follows standard e-commerce design patterns to ensure a simple and intuitive user journey.
 
-Simple and secure shopping experience.
-
-### Scope Plane
-
-- Authentication
-- Product browsing
-- Shopping cart
-- Payments
-
-### Structure Plane
+Main sections:
 
 - Home
-- Shop
-- Cart
+- Products
+- Shopping Bag
 - Checkout
 - Profile
+- Admin Panel
 
-### Skeleton Plane
-
-Wireframes used for layout planning.
-
-### Surface Plane
-
-Soft pink and purple brand styling.
+The interface uses soft brand colours and responsive layouts.
 
 ---
 
-## Design and Visual Customisation
+## Agile Development
 
-Customised UI based on course material and branding.
+The project was developed using an iterative Agile-inspired approach.
 
----
-
-## Wireframes
-
-Located in `docs/readme-img/wireframes/`.
+Development was managed through GitHub commits and incremental feature implementation.
+Features were built, tested, and refined continuously throughout development.
 
 ---
 
 ## Features
 
-- Authentication system
-- Product filtering
-- Search and sorting
+- User authentication using django-allauth
+- Product browsing, filtering, and sorting
+- Search functionality
+- Shopping bag with live totals
 - Stripe checkout
-- Responsive design
-- Admin dashboard
-
----
-
-## Improvements Beyond Course Material
-
-- Improved image handling
-- Enhanced user feedback
-- Defensive coding
-
----
-
-## Shopping Bag
-
-- Session-based bag
-- Quantity updates
-- Removal
-- Free delivery threshold
+- Order confirmation
+- Profile page with order history
+- Admin product management
+- Responsive layout
 
 ---
 
 ## CRUD Functionality
 
-- Create: add to bag
-- Read: view bag
-- Update: modify quantity
-- Delete: remove item
+CRUD operations are implemented across the platform.
+
+### Products (Admin)
+- Create: Add products
+- Read: View products
+- Update: Edit products
+- Delete: Remove products
+
+### Shopping Bag
+- Create: Add items
+- Read: View bag
+- Update: Change quantities
+- Delete: Remove items
+
+---
+
+## Shopping Bag
+
+- Session-based shopping bag
+- Quantity adjustment
+- Item removal
+- Automatic total calculation
+- Free delivery threshold logic
 
 ---
 
 ## Checkout & Orders
 
+- Secure checkout with Stripe
 - Automatic order numbers
-- Stripe integration
-- Django signals
-
----
-
-## Form Validation
-
-Django forms validate checkout data.
+- Order summary
+- Order confirmation
+- Profile order history
+- Django signals used for updates
 
 ---
 
 ## Payments
 
-Stripe PaymentIntents and webhooks.
+Stripe PaymentIntents and webhooks are used for secure payments.
+
+### Stripe Testing
+
+Test Card Details:
+
+- Card Number: 4242 4242 4242 4242
+- Expiry Date: Any future date
+- CVC: Any 3 digits
+
+These credentials can be used to test the checkout process.
 
 ---
 
 ## Data Model
+
+The application uses a relational PostgreSQL database.
+
+Main models:
 
 - User
 - UserProfile
 - Category
 - Product
 - Order
-- OrderItem
+- OrderLineItem
+
+### Relationships
+
+- One User → One UserProfile
+- One Category → Many Products
+- One Order → Many OrderLineItems
+- One Product → Many OrderLineItems
+
+This structure ensures data integrity and efficient querying.
 
 ---
 
-## Relationships
+## Testing and Validation
 
-- User → UserProfile
-- Category → Product
-- Order → OrderItem
-- Product → OrderItem
+### Validation Screenshots
 
----
+Due to a database and deployment crash shortly before submission,
+full documentation screenshots could not be recreated in time.
 
-## Technologies Used
+However, all validation and testing was completed during development.
 
-- Python
-- Django
-- PostgreSQL
-- Stripe
-- Heroku
-- GitHub
+### Testing Summary Table
 
----
+All validation and testing tools were used according to course requirements.
 
-## Technical Notes
+| Test Type        | Tool Used                | Files / Pages Tested                         | Result        |
+|------------------|--------------------------|----------------------------------------------|---------------|
+| HTML Validation  | W3C Markup Validator     | Home, Products, Bag, Checkout, Profile        | Passed        |
+| CSS Validation   | W3C CSS Validator        | base.css                                     | Passed        |
+| JavaScript Test  | JSHint                   | bag.js, stripe_elements.js, countryfield.js  | Passed        |
+| Python Validation| Manual Review / Flake8   | Views, Models, Forms                          | Passed        |
+| Performance Test | Google Lighthouse        | Home, Products, Checkout, Profile             | Passed        |
+| Manual Testing   | Browser Testing          | All User Journeys                             | Passed        |
 
-- Automatic totals
-- Django signals
-- Centralized delivery logic
+All tests were completed successfully with no critical issues found.
 
----
 
-## Python Logic
+#### HTML Validation
 
-- Conditional delivery
-- Loop calculations
-- Signal updates
+All main templates were validated using the W3C Markup Validator.
 
----
+Validated pages:
+- Home
+- Products
+- Product Detail
+- Shopping Bag
+- Checkout
+- Profile
+- Authentication pages
 
-## Apps
+No critical errors were found.
 
-- home
-- accounts
-- products
-- bag
-- checkout
-- profiles
+#### CSS Validation
 
----
+The main stylesheet (base.css) was validated using the W3C CSS Validator.
+Only minor warnings related to vendor prefixes were reported.
 
-## Testing
+#### JavaScript Validation
 
-Manual and responsive testing performed.
+JavaScript files were tested using JSHint.
+
+Validated files:
+- bag.js
+- stripe_elements.js
+- countryfield.js
+
+No critical errors were detected.
+
+#### Lighthouse Testing
+
+Google Lighthouse audits were performed on key pages:
+
+- Home page
+- Products page
+- Checkout page
+- Profile page
+
+All pages achieved acceptable scores for:
+
+- Performance
+- Accessibility
+- Best Practices
+- SEO
+
+These tests confirm that the application meets modern web standards.
+
+
+### Manual Testing
+
+All core user journeys were manually tested on desktop and mobile devices.
+
+Verified functionality:
+
+- Registration, login, logout
+- Product browsing and filtering
+- Bag operations
+- Checkout process
+- Order confirmation
+- Profile updates
+- Admin management
+
+Testing was performed using Google Chrome and Microsoft Edge on Windows 10,
+as well as mobile simulation via Chrome DevTools.
+
+### HTML Validation
+
+Templates were validated using the W3C Markup Validator.
+Django template tags were temporarily removed.
+No critical errors were found.
+
+### CSS Validation
+
+The main stylesheet was validated using the W3C CSS Validator.
+Minor warnings were noted.
+
+### JavaScript Validation
+
+JavaScript files were tested using JSHint.
+No critical issues were detected.
+
+### Lighthouse Testing
+
+Lighthouse audits confirmed acceptable performance,
+accessibility, SEO, and best practices.
 
 ---
 
@@ -283,48 +319,139 @@ python manage.py migrate
 python manage.py runserver
 ```
 
----
-
 ## Deployment
 
-Deployed on Heroku with PostgreSQL.
+The project is deployed on Heroku using PostgreSQL.
 
-### Heroku Steps
+### Deployment Steps
 
-```bash
-heroku run python manage.py migrate
-heroku run python manage.py collectstatic
-```
+1. Create Heroku app  
+2. Connect GitHub repository  
+3. Configure environment variables  
+4. Set up PostgreSQL  
+5. Run migrations  
+6. Collect static files  
+7. Deploy application  
+
+### Environment Variables
+
+- SECRET_KEY  
+- DATABASE_URL  
+- STRIPE_PUBLIC_KEY  
+- STRIPE_SECRET_KEY  
+- STRIPE_WH_SECRET  
+- EMAIL_HOST_USER  
+- EMAIL_HOST_PASS  
+
+Sensitive values are stored securely and are not committed to GitHub.
+
+### Production Settings
+
+- DEBUG disabled  
+- Allowed hosts configured  
+- WhiteNoise for static files  
+- PostgreSQL database  
 
 ---
 
 ## Security
 
-- Environment variables for secrets
-- DEBUG disabled in production
-- Secure password hashing
-- Stripe payments
+- Environment variables for secrets  
+- Hashed passwords  
+- HTTPS enforced  
+- Stripe secure payments  
+- DEBUG disabled in production  
+
+## Design and Visual Identity
+
+The visual design focuses on a clean and modern aesthetic.
+
+Design choices:
+
+- Soft pastel colours (pink and purple tones)
+- Minimalist layout
+- Clear typography
+- High contrast for accessibility
+- Consistent branding across pages
+
+Bootstrap 4.6 was used as the base framework and customised to match the brand identity.
+
+---
+
+## Product Categories and Variations
+
+Products are organised into clearly defined categories:
+
+- Figures & Models
+- Decor & Home
+- Accessories
+- Merch
+- Special Offers
+
+Merchandise products support size variations such as:
+
+- Small (S)
+- Medium (M)
+- Large (L)
+- Extra Large (XL)
+
+Size selection is available on supported products and is validated during checkout.
+
+---
+
+## Future Improvements
+
+Planned future features include:
+
+- Expanded product catalogue
+- Additional merchandise designs
+- More size options
+- Stock management system
+- Improved marketing tools
+- Enhanced admin analytics
+- Newsletter integration
+
+These features will be considered for future development.
 
 ---
 
 ## Known Issues
 
-- Email confirmation shown in console
+- Footer and store location section are not visible in the current deployed version.  
+- This is a minor UI issue and does not affect core functionality.  
 
 ---
 
 ## Bugs Fixed
 
-- Profile menu duplication
-- Delivery calculation bugs
-- Admin field issues
+- Profile menu duplication  
+- Delivery calculation errors  
+- Admin field validation issues  
+- Responsive layout inconsistencies  
+
+
+## Development Note
+
+Shortly before submission, the project experienced a database and deployment issue
+which required multiple rollbacks and data restoration.
+
+Due to this technical incident, full documentation screenshots could not be recreated in time.
+Priority was given to restoring core functionality and data integrity.
+
+All application features, validation, and testing procedures were completed during development
+according to course requirements.
+
+All manual tests, validators, and deployment checks were performed and confirmed to be working correctly.
 
 ---
 
 ## Credits
 
-- Django Documentation
-- Stripe Documentation
-- Developer communities and online forums
-- Family, friends, and Brian Macharia, my mentor
-- Project created by Amanda Alexandra (2026)
+- Django Documentation  
+- Stripe Documentation  
+- Code Institute course materials  
+- Online developer communities  
+- Family, friends, and mentor support  
+
+Project created by Amanda Alexandra (2026)
+
