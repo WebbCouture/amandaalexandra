@@ -73,6 +73,7 @@
 
                                 <td class="py-3" data-label="Quantity">
 
+                                    <!-- UPDATE FORM -->
                                     <form method="POST"
                                           action="{% url 'adjust_bag' item.item_id %}"
                                           class="update-form m-0">
@@ -115,28 +116,32 @@
                                                    value="{{ item.size }}">
                                         {% endif %}
 
-                                        <button type="submit"
-                                                class="btn btn-link text-info p-0">
-                                            <small>Update</small>
-                                        </button>
+                                        <!-- ACTIONS WRAPPER -->
+                                        <div class="bag-actions">
+                                            <button type="submit"
+                                                    class="btn btn-link text-info p-0">
+                                                <small>Update</small>
+                                            </button>
                                     </form>
 
-                                    <form method="POST"
-                                          action="{% url 'remove_from_bag' item.item_id %}"
-                                          class="m-0 mt-1 text-right">
-                                        {% csrf_token %}
+                                            <!-- REMOVE FORM -->
+                                            <form method="POST"
+                                                  action="{% url 'remove_from_bag' item.item_id %}"
+                                                  class="m-0">
+                                                {% csrf_token %}
 
-                                        {% if item.size %}
-                                            <input type="hidden"
-                                                   name="product_size"
-                                                   value="{{ item.size }}">
-                                        {% endif %}
+                                                {% if item.size %}
+                                                    <input type="hidden"
+                                                           name="product_size"
+                                                           value="{{ item.size }}">
+                                                {% endif %}
 
-                                        <button type="submit"
-                                                class="btn btn-link text-danger p-0">
-                                            <small>Remove</small>
-                                        </button>
-                                    </form>
+                                                <button type="submit"
+                                                        class="btn btn-link text-danger p-0">
+                                                    <small>Remove</small>
+                                                </button>
+                                            </form>
+                                        </div>
 
                                 </td>
 

@@ -48,7 +48,7 @@
 
     <header class="container-fluid fixed-top-desktop-only bg-white border-bottom">
 
-        <div id="topnav" class="row pt-lg-2 d-none d-lg-flex">
+        <div id="topnav" class="row pt-2 header-large-only">
 
             <div class="col-12 col-lg-6 my-auto py-1 py-lg-0 text-center text-lg-left">
                 <a href="{% url 'home' %}" class="nav-link main-logo-link">
@@ -106,7 +106,7 @@
 
         </div>
 
-        <div class="row d-none d-lg-flex pb-2">
+        <div class="row pb-2 header-large-only">
             <div class="col-12">
                 <div class="search-bar-container">
                     <form method="GET" action="{% url 'product_list' %}">
@@ -131,6 +131,10 @@
 
         <div class="row bg-white">
             <nav class="navbar navbar-expand-lg navbar-light w-100">
+                
+                <a class="navbar-brand text-black mobile-brand" href="{% url 'home' %}">
+                    <span class="logo-font"><strong>Amanda</strong>Alexandra</span>
+                </a>
 
                 <button class="navbar-toggler"
                         type="button"

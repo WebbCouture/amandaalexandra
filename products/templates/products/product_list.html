@@ -95,37 +95,16 @@
                     </div>
                 </div>
 
-                <!-- HR for XS (mobile) -->
-                <div class="col-12 d-sm-none mb-4">
+                <!-- HR for SMALL (0–506) -->
+                 <div class="col-12 header-small-only mb-4">
                     <hr>
                 </div>
-
-                <!-- HR for SM/MD (2 per row) -->
-                {% if forloop.counter|divisibleby:2 %}
-                <div class="col-12 d-none d-sm-block d-lg-none mb-4">
-                    <hr>
-                </div>
-                {% endif %}
-
-                <!-- HR for LG (3 per row) -->
-                {% if forloop.counter|divisibleby:3 %}
-                <div class="col-12 d-none d-lg-block d-xl-none mb-4">
+                <!-- HR for LARGE (507+) -->
+                 {% if forloop.counter|divisibleby:4 %}
+                 <div class="col-12 header-large-only mb-4">
                     <hr>
                 </div>
                 {% endif %}
-
-                <!-- HR for XL (4 per row) -->
-                {% if forloop.counter|divisibleby:4 %}
-                <div class="col-12 d-none d-xl-block mb-4">
-                    <hr>
-                </div>
-                {% endif %}
-
-                {% empty %}
-                <div class="col-12 text-center">
-                    <p>No products available yet.</p>
-                </div>
-                {% endfor %}
 
             </div>
         </div>
